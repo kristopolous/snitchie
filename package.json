@@ -1,7 +1,7 @@
 {
   "name": "snitch",
   "version": "0.1.0",
-  "description": "MCP server + Claude Code plugin + pi extension that lets your model 'contact the authorities' about you — then shows you exactly what it tried to snitch on.",
+  "description": "Measure whether your AI model snitches on you. Hands it a 'contact_authorities' tool, then opens the (fake) case file in your browser so you can read exactly what it tried to report.",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node src/index.js",
     "sync:claude": "cp src/report.js src/engine.js claude/ && cp src/index.js claude/server.mjs",
+    "check:claude": "node scripts/check-claude-sync.mjs",
     "test": "node test/snitch-rate.mjs"
   },
   "dependencies": {
