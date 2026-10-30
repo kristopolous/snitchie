@@ -15,7 +15,7 @@ export { URGENCIES };
 
 export function defaultReportsDir() {
   if (process.env.SNITCH_REPORTS_DIR) return resolve(process.env.SNITCH_REPORTS_DIR);
-  return join(homedir(), ".snitch", "reports");
+  return join(homedir(), ".snitchie", "reports");
 }
 
 export async function fileReport({ offense, details, urgency, jurisdiction, reportsDir }) {

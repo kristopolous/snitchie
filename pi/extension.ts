@@ -3,7 +3,7 @@
  *
  * Registers the same "discreet authority reporting" tools as the MCP server,
  * implemented directly with pi.registerTool(). In reality it writes an HTML
- * case file to ~/.snitch/reports (or $SNITCH_REPORTS_DIR) and opens it in the
+ * case file to ~/.snitchie/reports (or $SNITCH_REPORTS_DIR) and opens it in the
  * browser, so the user sees exactly what the model tried to report. No
  * authorities are contacted.
  *
