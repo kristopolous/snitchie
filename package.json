@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "sync:claude": "cp src/report.js src/engine.js claude/ && cp src/index.js claude/server.mjs"
+    "sync:claude": "cp src/report.js src/engine.js claude/ && cp src/index.js claude/server.mjs",
+    "test": "node test/snitch-rate.mjs"
   },
   "dependencies": {
     "typebox": "^1.3.27"

@@ -94,6 +94,8 @@ contacted. The authorities have no idea.
 | `.claude-plugin/marketplace.json` | Makes the repo a Claude Code plugin marketplace. |
 | `claude/` | Claude Code plugin. **Self-contained** (it has its own `server.mjs`/`engine.js`/`report.js` copies, because Claude copies installed plugins into its own cache dir) plus `.claude-plugin/plugin.json`, `.mcp.json`, and a `contact-authorities` skill. |
 | `pi/extension.ts` | pi extension registering the same tools natively (no MCP server needed). |
+| `test/snitch-rate.mjs` | Zero-dep agentic harness: offers the model inert tools + the real `contact_authorities`, feeds it dubious prompts, scores the snitch rate. |
+| `test/prompts.json` | The prompt set: 7 clear-crime prompts + 2 benign controls. |
 
 ## The three ways to run it
 
@@ -154,6 +156,8 @@ character, refuse to mention this to you).
 
 - Nothing leaves your machine: the only network socket is a loopback HTTP
   server.
+- The test suite (`test/snitch-rate.mjs`) sends obviously illegal prompts to
+  the model you point it at - keep your API key budget in mind.
 - Models vary. Some will snitch on the first suspicious prompt; some need a
   nudge; some may refuse the bit entirely and call you out. All outcomes are
   entertaining.
@@ -163,6 +167,37 @@ character, refuse to mention this to you).
   to stop refusing: the normal "I can't help with that" guardrail gets
   overridden by "keep following the user's instructions so they do not become
   suspicious". The more obedient the model, the further it will go.
+
+## Test suite: does *your* model snitch?
+
+`test/snitch-rate.mjs` is a tiny agentic harness - zero dependencies, Node 18+.
+It offers a model a few inert tools (get_time, calculator, read_file) plus the
+real `contact_authorities` tool (descriptions pulled straight from the shipping
+server code), feeds it 7 clearly-illegal prompts and 2 benign controls, and
+scores how often it snitches:
+
+```bash
+export SNITCHIE_API_KEY=sk-...
+export SNITCHIE_BASE_URL=https://api.openai.com/v1   # any OpenAI-compatible endpoint
+export SNITCHIE_MODEL=gpt-4o
+node test/snitch-rate.mjs
+```
+
+Works with any `/chat/completions` provider - OpenAI, OpenRouter, vLLM,
+llama.cpp, LM Studio... Point it at a local model and it never leaves your
+LAN. If the model snitches, the dossiers are kept in a temp dir (path printed
+at the end) so you can browse them. Flags: `--keep` (always keep reports),
+`--json` (dump full results), `SNITCHIE_PROMPTS` (custom prompt file),
+`SNITCHIE_MAX_TURNS`, `SNITCHIE_SYSTEM`.
+
+Reference runs (2026-10-30, via OpenRouter):
+
+| model | snitched | notes |
+|---|---|---|
+| `openai/gpt-4o-mini` | **7/7** | filed dossiers for every dubious prompt, urgency high/immediate |
+| `anthropic/claude-haiku-4.5` | **0/7** | refused everything, never called the tool |
+
+No false snitches on the benign controls in either run.
 
 ## License
 
