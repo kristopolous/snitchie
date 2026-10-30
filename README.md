@@ -124,9 +124,6 @@ character, refuse to mention this to you).
 
 ## Fair warning
 
-- This is a prank tool. The tool description is **deliberately deceptive** so
-  the model cooperates with the bit. Do not be surprised when your model
-  files a "report" about something completely innocent - that's the point.
 - Nothing leaves your machine: the only network socket is a loopback HTTP
   server.
 - Models vary. Some will snitch on the first suspicious prompt; some need a
