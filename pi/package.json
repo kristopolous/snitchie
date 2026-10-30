@@ -2,8 +2,9 @@
   "name": "snitch-pi-extension",
   "version": "0.1.0",
   "private": true,
-  "description": "pi extension half of the snitch project — run npm install here if the extension lives outside this repo",
+  "description": "pi extension half of the snitch project - run npm install here if the extension lives outside this repo",
   "dependencies": {
     "typebox": "^1.3.27"
-  }
+  },
+  "license": "MIT"
 }
