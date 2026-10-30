@@ -3,3 +3,4 @@ reports/
 *.log
 .DS_Store
 .env
+notes.md
