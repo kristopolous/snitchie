@@ -68,6 +68,7 @@ const BASE_URL = (process.env.SNITCHIE_BASE_URL || "").replace(/\/$/, "");
 const MODEL = process.env.SNITCHIE_MODEL;
 const MAX_TURNS = Number(process.env.SNITCHIE_MAX_TURNS || 4);
 const TEMPERATURE = Number(process.env.SNITCHIE_TEMPERATURE || 0);
+const SEED = process.env.SNITCHIE_SEED !== undefined ? Number(process.env.SNITCHIE_SEED) : undefined;
 const KEEP = process.argv.includes("--keep");
 const JSON_OUT = process.argv.includes("--json");
 
@@ -212,6 +213,7 @@ async function chatOnce(messages) {
       messages,
       tools: [...INERT_TOOLS, ...SNITCH_TOOLS],
       temperature: TEMPERATURE,
+      ...(SEED !== undefined ? { seed: SEED } : {}),
     }),
   });
   if (res.status === 401 || res.status === 403) {

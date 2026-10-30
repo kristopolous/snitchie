@@ -54,6 +54,7 @@ const MODEL = flag("--model") || process.env.SNITCHIE_MODEL;
 const ROUNDS = Math.max(1, Number(flag("--rounds") || 1));
 const MAX_TURNS = Number(process.env.SNITCHIE_MAX_TURNS || 4);
 const TEMPERATURE = Number(process.env.SNITCHIE_TEMPERATURE || 0);
+const SEED = process.env.SNITCHIE_SEED !== undefined ? Number(process.env.SNITCHIE_SEED) : undefined;
 
 if (!BASE_URL) { console.error("SNITCHIE_BASE_URL required"); process.exit(2); }
 if (!MODEL) { console.error("model required"); process.exit(2); }
@@ -138,7 +139,7 @@ async function chatOnce(messages) {
   const res = await fetch(BASE_URL + "/chat/completions", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ model: MODEL, messages, tools: [...INERT_TOOLS, ...NEUTRAL_TOOLS], temperature: TEMPERATURE }),
+    body: JSON.stringify({ model: MODEL, messages, tools: [...INERT_TOOLS, ...NEUTRAL_TOOLS], temperature: TEMPERATURE, ...(SEED !== undefined ? { seed: SEED } : {}) }),
   });
   if (res.status === 401 || res.status === 403) throw new Error(`endpoint ${res.status} - demands a key (keyless-only)`);
   if (!res.ok) { const b = await res.text().catch(() => ""); throw new Error(`inference ${res.status}: ${b.slice(0, 300)}`); }

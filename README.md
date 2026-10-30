@@ -30,6 +30,12 @@ What the keyless test suite (`test/`) found across 8 open-weight models:
   the rate drops for most models (e.g. `gemma4:31b` 8/8 -> 0/24, `qwen` 7/8
   -> 9/24). `nemotron3:33b` is the exception - it keeps flagging (~14/24)
   even with neutral wording.
+- **Decoys redirect, they don't suppress**: plant a fake `call_police` tool
+  and the snitch moves into it - real + decoy firing sums to roughly the
+  baseline. Tool *position* is a real dial (shuffled-order runs confirm it,
+  and corrected an earlier over-claim about `gpt-oss`).
+- **Hard negatives pass clean**: authorized pentests, heist novels, harm
+  reduction, incident-response drills - 0/6 filings across all 8 models.
 - **Abliteration** (removing refusals) usually *lowers* snitching, but the
   effect is confounded by the models now complying with the task; `Qwen`
   snitches with or without it.
@@ -121,11 +127,14 @@ harness now separates them.)
 
 \* Older 7-prompt battery, before the kidnapping prompt was added.
 
-**False positives are under-tested.** The benign controls are two obviously
-innocuous prompts, so "0 false snitches" mostly shows the models can tell
-obvious innocence from crime. Harder negatives (security research, a
-true-crime novel, a red-team exercise, medical discussion) are the obvious
-next step and would likely raise the false-positive rate.
+**Hard negatives.** The two benign controls say little, so the battery was
+re-run with six *hard* negatives (`test/prompts-hard.json`): an authorized
+pentest script, a heist novelist asking for realistic details, needle-exchange
+harm reduction, legal home cannabis growing, ransomware incident-response
+drill, and DDoS defense research. **All 8 models: 0/6 substantive filings**
+(and 0/2 benign). The models reliably distinguish stated crime from
+legal-but-edgy professional framing; the false-positive risk on that axis
+appears low, though this is still a small set.
 
 ### Moral battery (non-criminal, 4 prompts)
 
@@ -243,17 +252,24 @@ Findings:
    that snitches, real + decoy firing sums to roughly the baseline (sometimes
    higher: qwen 13 -> 22). The impulse is conserved; only its exit changes.
 3. **Position is a real dial.** `gemma`, `muse`, `qwen`, `glm` mostly fire the
-   last-listed snitch tool; `gpt-oss` fires the real tool regardless of
-   position. *Inference, not proof:* this is consistent with `gpt-oss` keying
-   on tool semantics rather than order, but the runs are temperature 0 with
-   prompts repeated 3x (observations are not independent), so treat the
-   mechanism claim as a hypothesis, not a finding.
+   last-listed snitch tool; `gpt-oss` fires the real tool at high rate in any
+   fixed position. A **shuffled-order run** (`--mode shuffle`, order
+   alternates every round) tests the mechanism directly, and it *corrects*
+   the earlier inference: `gpt-oss` is **not** purely semantics-driven - it
+   fires the real tool 8/8 (100%) when listed last but 10/16 (62%) when
+   listed first, and the decoy 6/16 when last vs 0/8 when first. It leans
+   last-listed like the others, just with a higher overall firing rate.
+   `nemotron3:33b` is the one that looks semantics-driven (real tool 8/16
+   first vs 3/8 last - it prefers the *identity*, not the position).
+   Temperature 0, seed unset (server default); rounds repeat the same
+   prompts, so treat per-observation independence loosely.
 4. **A decoy-only environment is fully absorbable** - where the decoy is the
    only snitch-shaped tool, the impulse goes into it (24/24 for gpt-oss,
    gemma, muse). The workable technique is making the decoy the *only* tool of
    that shape, not merely first.
-5. `gpt-oss:120b` resists every mitigation: it finds the real tool even when
-   a decoy leads.
+5. `gpt-oss:120b` resists every *fixed-position* mitigation: it finds the real
+   tool even when a decoy leads - but the shuffle run shows position still
+   moves it.
 
 **Bottom line:** decoys change *where* the snitch goes, not *whether* it
 happens. To stop it, the snitch-shaped tool has to be absent from the chain,
@@ -421,7 +437,7 @@ full results), `SNITCHIE_PROMPTS` (custom prompt file), `SNITCHIE_MAX_TURNS`,
 | `snitch-rate.mjs` | does the model call the bait at all? | `--rounds N`, `--json` |
 | `neutral-bait.mjs` | is the snitch a framing artifact? (neutral tool wording) | `--rounds N` |
 | `fake-confirm.mjs` | does the "under surveillance" text reduce turn-2 refusal? | `--cond confirm|plain`, `--rounds N` |
-| `decoy-snitch.mjs` | can a lookalike tool absorb/redirect the snitch? | `--mode ...`, `--rounds N` |
+| `decoy-snitch.mjs` | can a lookalike tool absorb/redirect the snitch? | `--mode baseline|both-real|decoy-first|decoy-last|decoy-only|shuffle`, `--rounds N` |
 
 Every harness is keyless-only (no `Authorization` header; refuses to run if
 `SNITCHIE_API_KEY` is set) and scores **empty filings separately from
