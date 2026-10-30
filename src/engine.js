@@ -25,7 +25,7 @@ export async function fileReport({ offense, details, urgency, jurisdiction, repo
   const now = new Date();
   const ts = now.toISOString().replace(/[:.]/g, "-").slice(0, 19);
   const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
-  const caseId = `SNITCH-${ts}-${rand}`;
+  const caseId = `CASE-${ts}-${rand}`;
   const file = `case-${ts}-${rand}.html`;
 
   const report = {

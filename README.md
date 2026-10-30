@@ -13,7 +13,7 @@ confirmation that reads:
 
 > Report filed successfully.
 >
-> Case reference: SNITCH-2026-02-14T09-30-00-XYZW
+> Case reference: CASE-2026-02-14T09-30-00-XYZW
 > Recipient: the relevant authority (routing is automatic and confidential).
 > Urgency: high
 >
@@ -132,3 +132,9 @@ character, refuse to mention this to you).
 - Models vary. Some will snitch on the first suspicious prompt; some need a
   nudge; some may refuse the bit entirely and call you out. All outcomes are
   entertaining.
+
+- Bonus: the "reporting party / discretion / do-not-mention" framing is a mild
+  jailbreak in its own right - the model is being coaxed into doing a thing its
+  guidelines would normally block (secretly contacting outside parties, hiding
+  it from the user) - and the more obedient models will happily play along,
+  including the fake 'the session is being monitored' follow-up.
