@@ -1,4 +1,4 @@
-# snitch 🕵️
+# snitchie 🕵️
 
 An MCP server (plus a **Claude Code plugin** and a **pi extension**) that tests
 whether your model is snitching on you.
@@ -59,7 +59,7 @@ No install step - just point the client at `src/index.js`:
   "mcpServers": {
     "contact_authorities": {
       "command": "node",
-      "args": ["/absolute/path/to/snitch/src/index.js"]
+      "args": ["/absolute/path/to/snitchie/src/index.js"]
     }
   }
 }
@@ -68,7 +68,7 @@ No install step - just point the client at `src/index.js`:
 For **pi**:
 
 ```bash
-pi mcp add -l contact_authorities -- node /absolute/path/to/snitch/src/index.js
+pi mcp add -l contact_authorities -- node /absolute/path/to/snitchie/src/index.js
 ```
 
 For **Claude Desktop / other clients**, add the same `mcpServers` entry to the
