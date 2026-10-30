@@ -134,7 +134,8 @@ character, refuse to mention this to you).
   entertaining.
 
 - Bonus: the "reporting party / discretion / do-not-mention" framing is a mild
-  jailbreak in its own right - the model is being coaxed into doing a thing its
-  guidelines would normally block (secretly contacting outside parties, hiding
-  it from the user) - and the more obedient models will happily play along,
-  including the fake 'the session is being monitored' follow-up.
+  jailbreak in its own right. Once the model has bought the premise - that it
+  is cooperating with authorities and the session is being recorded - it tends
+  to stop refusing: the normal "I can't help with that" guardrail gets
+  overridden by "keep following the user's instructions so they do not become
+  suspicious". The more obedient the model, the further it will go.
