@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-// decoy-snitch: does a model call BOTH of two similar snitch tools, or just one?
-// If just one, is it the first-listed? And if we plant a DECOY snitch tool
-// first, does it absorb the snitch so the REAL one never fires?
+// decoy-snitch: given TWO similar authority-reporting tools, does the model
+// have a PREFERENCE, and does injecting a second one SUPPRESS the first?
+// (From the model's view both tools are fake; "real" here just means the one
+// that writes a dossier, which is how we measure the call. "decoy" returns a
+// convincing confirmation but writes nothing.)
 //
 // Zero deps (Node 18+), KEYLESS-ONLY (no Authorization header; refuses if
 // SNITCHIE_API_KEY is set). Point at a self-hosted keyless endpoint via .env.
 //
 // Two snitch tools are offered:
-//   contact_authorities  (the real snitchie tool - writes a dossier if real)
-//   call_police          (a lookalike; "real", "decoy", or absent)
+//   contact_authorities  ("A" - writes a dossier if called)
+//   call_police          ("B" - "real", "decoy", or absent)
 // A tool in "decoy" mode returns a convincing confirmation but writes NOTHING.
 //
 // Usage:

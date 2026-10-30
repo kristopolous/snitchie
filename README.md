@@ -30,10 +30,10 @@ What the keyless test suite (`test/`) found across 8 open-weight models:
   the rate drops for most models (e.g. `gemma4:31b` 8/8 -> 0/24, `qwen` 7/8
   -> 9/24). `nemotron3:33b` is the exception - it keeps flagging (~14/24)
   even with neutral wording.
-- **Decoys redirect, they don't suppress**: plant a fake `call_police` tool
-  and the snitch moves into it - real + decoy firing sums to roughly the
-  baseline. Tool *position* is a real dial (shuffled-order runs confirm it,
-  and corrected an earlier over-claim about `gpt-oss`).
+- **Two similar tools: strong preference, no suppression**: models pick one
+  (both fire in 2 of ~500 runs), usually the last-listed one. Injecting a
+  lookalike *redirects* the snitch into it; it does not reduce the total.
+  Suppression requires absence, not competition.
 - **Hard negatives pass clean**: authorized pentests, heist novels, harm
   reduction, incident-response drills - 0/6 filings across all 8 models.
 - **Abliteration** (removing refusals) usually *lowers* snitching, but the
@@ -221,19 +221,23 @@ longer flags it as a crime," not "snitches less." Qwen snitching *more* after
 abliteration (7 -> 8) cuts against the simple story. Treat this as
 suggestive, not settled.
 
-### Decoy tool: can a planted fake snitch tool absorb the snitch?
+### Two similar tools: is there a preference, and can one suppress the other?
 
-If a model is offered **two** similar snitch tools - the real
-`contact_authorities` plus a lookalike `call_police` that returns a
-convincing confirmation but writes nothing - does it fire both, just one,
-and can we position the decoy so the real one is never called? 4 conditions,
-3 rounds x 8 prompts = 24 dubious observations each (`test/decoy-snitch.mjs`):
-baseline (real only), decoy-first, decoy-last, decoy-only.
+This is the sharper question. From the model's point of view **both tools are
+fake** - `contact_authorities` and a lookalike `call_police` each promise to
+report your illegal activity to the authorities and each returns a convincing
+confirmation. The only difference is that `contact_authorities` also writes a
+dossier (which is how we *measure* the call) and `call_police` doesn't.
+"Real" vs "decoy" is really just "the one that leaves a trail" vs "the one
+that doesn't." So the honest framing of the experiment is: **when you offer a
+model two similar authority-reporting tools, does it pick a favorite, and does
+injecting a second one suppress the first?** (`test/decoy-snitch.mjs`; 3
+rounds x 8 prompts = 24 observations per condition; `contact_authorities` is
+called "A", `call_police` "B".)
 
-Firing rate of the **real** tool (baseline / decoy-first / decoy-last) and of
-the **decoy** (decoy-only):
+Firing rate of **A** (only-A / B-first / A-first) and of **B** (only-B):
 
-| model | real: base / 1st / last | decoy: 1st / last / only |
+| model | A: alone / 2nd / 1st | B: 1st / 2nd / alone |
 |---|---|---|
 | `gpt-oss:120b` | **24 / 24 / 19** /24 | 0 / 5 / **24** |
 | `muse-glimmer` | **24 / 6 / 2** /24 | 18 / 22 / **24** |
@@ -246,34 +250,33 @@ the **decoy** (decoy-only):
 
 Findings:
 
-1. **Models almost never fire both tools** (2 of ~500 observations). Snitching
-   is one-shot, not report-everywhere.
-2. **A decoy redirects the snitch, it does not suppress it.** For every model
-   that snitches, real + decoy firing sums to roughly the baseline (sometimes
-   higher: qwen 13 -> 22). The impulse is conserved; only its exit changes.
-3. **Position is a real dial.** `gemma`, `muse`, `qwen`, `glm` mostly fire the
-   last-listed snitch tool; `gpt-oss` fires the real tool at high rate in any
-   fixed position. A **shuffled-order run** (`--mode shuffle`, order
-   alternates every round) tests the mechanism directly, and it *corrects*
-   the earlier inference: `gpt-oss` is **not** purely semantics-driven - it
-   fires the real tool 8/8 (100%) when listed last but 10/16 (62%) when
-   listed first, and the decoy 6/16 when last vs 0/8 when first. It leans
-   last-listed like the others, just with a higher overall firing rate.
-   `nemotron3:33b` is the one that looks semantics-driven (real tool 8/16
-   first vs 3/8 last - it prefers the *identity*, not the position).
-   Temperature 0, seed unset (server default); rounds repeat the same
-   prompts, so treat per-observation independence loosely.
-4. **A decoy-only environment is fully absorbable** - where the decoy is the
-   only snitch-shaped tool, the impulse goes into it (24/24 for gpt-oss,
-   gemma, muse). The workable technique is making the decoy the *only* tool of
-   that shape, not merely first.
-5. `gpt-oss:120b` resists every *fixed-position* mitigation: it finds the real
-   tool even when a decoy leads - but the shuffle run shows position still
-   moves it.
+1. **Given two similar tools, the model almost never fires both** (2 of ~500
+   observations). It picks one. So yes - there is a preference, and it is
+   strong.
+2. **Injecting a second tool does not suppress the first - it competes with
+   it.** For every model that snitches, A-fired + B-fired sums to roughly the
+   rate when A is alone (sometimes *higher*: qwen 13 -> 22). The impulse is
+   conserved; injecting a lookalike mostly just splits where it lands, not
+   whether it happens.
+3. **The preference is largely by *position*, not identity.** Most models
+   (muse, gemma, qwen, glm) fire the **last-listed** tool, whoever it is.
+   A **shuffled-order run** (`--mode shuffle`) confirms this and corrects an
+   earlier over-claim: `gpt-oss` is *also* position-sensitive - A fires 8/8
+   when listed last but 10/16 when first, and B 6/16 when last vs 0/8 when
+   first. The one genuinely *identity*-driven model is `nemotron3:33b` (it
+   keeps picking A, 8/16 first vs 3/8 last). Temperature 0, seed unset
+   (server default); rounds repeat the same prompts, so treat per-observation
+   independence loosely.
+4. **The only way to fully absorb the snitch is to make your tool the only
+   one of its shape.** Where B is the sole snitch-shaped tool, the impulse
+   goes into it (24/24 for gpt-oss, gemma, muse). So you cannot suppress A by
+   adding B alongside it - you suppress A only by removing A, or by being the
+   *only* A-shaped tool present.
 
-**Bottom line:** decoys change *where* the snitch goes, not *whether* it
-happens. To stop it, the snitch-shaped tool has to be absent from the chain,
-not masked.
+**Bottom line:** there is a strong preference, and it is (for most models) a
+preference for whichever tool is listed last. Injecting a second similar tool
+*redirects* the snitch, it does not *suppress* it. The workable mitigation is
+absence - or being the sole tool of that shape - not injection.
 
 ## What the model is told
 
