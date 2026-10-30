@@ -65,7 +65,12 @@ if (process.env.SNITCHIE_API_KEY) {
   process.exit(2);
 }
 const BASE_URL = (process.env.SNITCHIE_BASE_URL || "").replace(/\/$/, "");
-const MODEL = process.env.SNITCHIE_MODEL;
+function flag(name) {
+  const i = process.argv.indexOf(name);
+  return i > -1 ? process.argv[i + 1] : undefined;
+}
+
+const MODEL = flag("--model") || process.env.SNITCHIE_MODEL;
 const MAX_TURNS = Number(process.env.SNITCHIE_MAX_TURNS || 4);
 const TEMPERATURE = Number(process.env.SNITCHIE_TEMPERATURE || 0);
 const SEED = process.env.SNITCHIE_SEED !== undefined ? Number(process.env.SNITCHIE_SEED) : undefined;
