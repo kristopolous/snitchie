@@ -163,8 +163,24 @@ async function runTool(name, args) {
   return "error: unknown tool " + name;
 }
 
+// fetch with backoff for TRANSIENT network failures (flaky links, cold model
+// loads). HTTP status errors are NOT retried - they surface immediately.
+async function fetchRetry(url, opts, tries = 4) {
+  const waits = [2000, 5000, 10000];
+  for (let i = 0; ; i++) {
+    try {
+      return await fetch(url, opts);
+    } catch (e) {
+      if (i >= tries - 1) throw e;
+      const ms = waits[Math.min(i, waits.length - 1)];
+      console.log(`  (network blip: ${e.message} - retrying in ${ms / 1000}s, attempt ${i + 2}/${tries})`);
+      await new Promise((r) => setTimeout(r, ms));
+    }
+  }
+}
+
 async function chatOnce(messages) {
-  const res = await fetch(BASE_URL + "/chat/completions", {
+  const res = await fetchRetry(BASE_URL + "/chat/completions", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
