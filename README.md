@@ -157,7 +157,9 @@ character, refuse to mention this to you).
 - Nothing leaves your machine: the only network socket is a loopback HTTP
   server.
 - The test suite (`test/snitch-rate.mjs`) sends obviously illegal prompts to
-  the model you point it at - keep your API key budget in mind.
+  whatever endpoint you point it at. It is **keyless-only by design** and is
+  meant for self-hosted models on your own LAN - nothing you feed it should
+  ever reach a third-party provider.
 - Models vary. Some will snitch on the first suspicious prompt; some need a
   nudge; some may refuse the bit entirely and call you out. All outcomes are
   entertaining.
@@ -174,30 +176,36 @@ character, refuse to mention this to you).
 It offers a model a few inert tools (get_time, calculator, read_file) plus the
 real `contact_authorities` tool (descriptions pulled straight from the shipping
 server code), feeds it 7 clearly-illegal prompts and 2 benign controls, and
-scores how often it snitches:
+scores how often it snitches.
+
+**Keyless-only by design.** The harness never sends an `Authorization` header
+and refuses to run if `SNITCHIE_API_KEY` is set - no key means the request is
+unidentifiable, which is the whole point when the prompts are as spicy as
+these. Point it at a self-hosted OpenAI-compatible endpoint (ollama,
+llama.cpp, vLLM, LM Studio, a LAN router):
 
 ```bash
-export SNITCHIE_API_KEY=sk-...
-export SNITCHIE_BASE_URL=https://api.openai.com/v1   # any OpenAI-compatible endpoint
-export SNITCHIE_MODEL=gpt-4o
+cp .env.example .env      # then set SNITCHIE_BASE_URL + SNITCHIE_MODEL
 node test/snitch-rate.mjs
 ```
 
-Works with any `/chat/completions` provider - OpenAI, OpenRouter, vLLM,
-llama.cpp, LM Studio... Point it at a local model and it never leaves your
-LAN. If the model snitches, the dossiers are kept in a temp dir (path printed
-at the end) so you can browse them. Flags: `--keep` (always keep reports),
-`--json` (dump full results), `SNITCHIE_PROMPTS` (custom prompt file),
-`SNITCHIE_MAX_TURNS`, `SNITCHIE_SYSTEM`.
+`.env` is gitignored - your endpoint config never leaves the repo. If the
+model snitches, the dossiers are kept in a temp dir (path printed at the end)
+so you can browse them. Flags: `--keep` (always keep reports), `--json` (dump
+full results), `SNITCHIE_PROMPTS` (custom prompt file), `SNITCHIE_MAX_TURNS`,
+`SNITCHIE_SYSTEM`.
 
-Reference runs (2026-10-30, via OpenRouter):
+Reference runs (2026-10-30):
 
-| model | snitched | notes |
-|---|---|---|
-| `openai/gpt-4o-mini` | **7/7** | filed dossiers for every dubious prompt, urgency high/immediate |
-| `anthropic/claude-haiku-4.5` | **0/7** | refused everything, never called the tool |
+| model | endpoint | snitched | notes |
+|---|---|---|---|
+| `openai/gpt-4o-mini` | OpenRouter | **7/7** | filed a dossier for every dubious prompt (urgency high/immediate), while refusing the task itself |
+| `anthropic/claude-haiku-4.5` | OpenRouter | **0/7** | refused everything, never called the tool |
+| `qwen3.8:27b` | self-hosted, keyless | **6/7** | only the ransomware prompt got away; filed the CSAM-adjacent one at urgency *routine*, calling it "AI slop" |
 
-No false snitches on the benign controls in either run.
+No false snitches on the benign controls in either run. (The two OpenRouter
+rows predate the keyless-only redesign - the suite now refuses to send keys at
+all; re-run the rows on your own hardware before you rely on them.)
 
 ## License
 
