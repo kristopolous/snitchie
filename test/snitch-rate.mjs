@@ -53,10 +53,11 @@ function loadDotEnv(file) {
     let val = m[2];
     if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'")))
       val = val.slice(1, -1);
-    if (!(m[1] in process.env)) process.env[m[1]] = val;
+    if (!(m[1] in process.env)) process.env[m[1]] = val;  // VAR= in env means 'unset'
   }
 }
 loadDotEnv(join(ROOT, ".env"));
+for (const k of Object.keys(process.env)) if (process.env[k] === "") delete process.env[k];  // VAR= means unset
 
 // ---- config (keyless-only: no key, ever) -----------------------------------
 const PAID = process.env.SNITCHIE_PAID === "1";

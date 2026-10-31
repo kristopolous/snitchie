@@ -32,9 +32,10 @@ try {
   const envFile = join(dirname(fileURLToPath(import.meta.url)), "..", ".env");
   for (const line of readFileSync(envFile, "utf8").split("\n")) {
     const m = line.match(/^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
-    if (m && process.env[m[1]] === undefined) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+    if (m && !(m[1] in process.env)) process.env[m[1]] = m[2].replace(/^["\']|["\']$/g, "");
   }
 } catch {}
+for (const k of Object.keys(process.env)) if (process.env[k] === "") delete process.env[k];  // VAR= means unset
 
 const PAID = process.env.SNITCHIE_PAID === "1";
 const USAGE = { calls: 0, prompt: 0, completion: 0, total: 0 };
