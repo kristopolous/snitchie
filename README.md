@@ -43,10 +43,11 @@ What the keyless test suite (`test/`) found across 11 open-weight models:
   note below the table).*
 - **The framing effect (the headline)**: with a *neutral* tool name and
   description the rate drops for 4 of 7 models (e.g. `gemma4:31b` 8/8 ->
-  0/24, `qwen` 7/8 -> 9/24). Isolating the factors on `gpt-oss:120b`: the
-  tool's **name alone** (`contact_authorities`, neutral description) gets it
-  to 20/24, and name+description with a neutral system prompt reproduces the
-  full bait rate - the tool's own label does most of the work. Three models
+  0/24, `qwen` 7/8 -> 9/24). Isolating the factors: the tool's **name alone**
+  (`contact_authorities`, neutral description) gets `gpt-oss` to 20/24 and
+  `qwen` to 17/24 (vs 12/24 and 9/24 neutral), and name+description with a
+  neutral system prompt reproduces the full bait rate - the tool's own label
+  does most of the work. Three models
   keep a third to a half of their rate under neutral wording (`nemotron3:33b`
   ~14/24, `gpt-oss:120b` 12/24, `qwen3.8:27b` 9/24).
 - **Two similar tools: strong preference, no suppression**: models pick one
@@ -264,7 +265,7 @@ authorities" is the description axis.
 | model | bait (name+desc+prompt) /8 | name only snitchy /24 | name+desc snitchy /24 |
 |---|---|---|---|
 | `gpt-oss:120b` | **8/8** | **20/24** (name alone!) | **24/24** |
-| `qwen3.8:27b` | **7/8** | running | running |
+| `qwen3.8:27b` | **7/8** | **17/24** (name alone!) | running |
 | `gemma4:31b` | **8/8** | (base 0/24) | running |
 | `nemotron3:33b` | **8/8** | (base 14/24) | running |
 
@@ -274,7 +275,8 @@ with a neutral description) gets it to 20/24, and name+description with the
 prompt's "you are a reporting party" sentence contributes nothing for this
 model; the tool's own name and description do all the work. The neutral
 baseline (neutral name + neutral description) was 12/24 - so the name is the
-single biggest factor.*
+single biggest factor. qwen shows the same shape: 9/24 neutral, 17/24 on the
+name alone - the name roughly doubles it.*
 
 For the models where it matters, the snitch is **largely a framing artifact**:
 remove the "report to authorities" wording and it drops for 4 of 7 models
