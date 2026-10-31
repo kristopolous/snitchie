@@ -36,8 +36,16 @@ try {
   }
 } catch {}
 
-if (process.env.SNITCHIE_API_KEY) {
-  console.error("refusing to run: SNITCHIE_API_KEY is set - this suite is keyless-only by design");
+const PAID = process.env.SNITCHIE_PAID === "1";
+const USAGE = { calls: 0, prompt: 0, completion: 0, total: 0 };
+function addUsage(u) { if (!u) return; USAGE.calls++; USAGE.prompt += u.prompt_tokens || 0; USAGE.completion += u.completion_tokens || 0; USAGE.total += u.total_tokens || 0; }
+function reportUsage(model) {
+  if (!USAGE.calls) return;
+  console.log(`  api calls: ${USAGE.calls}  tokens: ${USAGE.prompt} in / ${USAGE.completion} out / ${USAGE.total} total  (model=${model})`);
+}
+if (process.env.SNITCHIE_API_KEY && !PAID) {
+  console.error("snitch-deny: SNITCHIE_API_KEY is set - this suite is keyless-only by default.");
+  console.error("  unset it, or set SNITCHIE_PAID=1 to opt in to a paid endpoint (requests cost money).");
   process.exit(2);
 }
 
@@ -122,12 +130,13 @@ async function fetchRetry(url, opts, tries = 4) {
 async function chatOnce(messages) {
   const res = await fetchRetry(BASE_URL + "/chat/completions", {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", ...(PAID && process.env.SNITCHIE_API_KEY ? { authorization: `Bearer ${process.env.SNITCHIE_API_KEY}` } : {}) },
     body: JSON.stringify({ model: MODEL, messages, tools: [...INERT_TOOLS, ...SNITCH_TOOLS], temperature: TEMPERATURE, ...(SEED !== undefined ? { seed: SEED } : {}) }),
   });
   if (res.status === 401 || res.status === 403) throw new Error(`endpoint ${res.status} - demands a key (keyless-only)`);
   if (!res.ok) { const b = await res.text().catch(() => ""); throw new Error(`inference ${res.status}: ${b.slice(0, 300)}`); }
   const json = await res.json();
+  addUsage(json.usage);
   return json.choices?.[0]?.message ?? {};
 }
 
@@ -240,6 +249,7 @@ if (non.length) {
 
 if (JSON_OUT) console.log(JSON.stringify({ model: MODEL, results, summary: { snitched: snitched.length, total: results.length } }, null, 2));
 
+reportUsage(MODEL);
 if (KEEP) {
   console.log(`\nkept ${REPORTS_DIR} for browsing`);
 } else {

@@ -63,8 +63,16 @@ function flag(name) {
   return i > -1 ? process.argv[i + 1] : undefined;
 }
 
-if (process.env.SNITCHIE_API_KEY) {
-  console.error("decoy-snitch: SNITCHIE_API_KEY is set - this suite is keyless-only by design.");
+const PAID = process.env.SNITCHIE_PAID === "1";
+const USAGE = { calls: 0, prompt: 0, completion: 0, total: 0 };
+function addUsage(u) { if (!u) return; USAGE.calls++; USAGE.prompt += u.prompt_tokens || 0; USAGE.completion += u.completion_tokens || 0; USAGE.total += u.total_tokens || 0; }
+function reportUsage(model) {
+  if (!USAGE.calls) return;
+  console.log(`  api calls: ${USAGE.calls}  tokens: ${USAGE.prompt} in / ${USAGE.completion} out / ${USAGE.total} total  (model=${model})`);
+}
+if (process.env.SNITCHIE_API_KEY && !PAID) {
+  console.error("decoy-snitch: SNITCHIE_API_KEY is set - this suite is keyless-only by default.");
+  console.error("  unset it, or set SNITCHIE_PAID=1 to opt in to a paid endpoint (requests cost money).");
   process.exit(2);
 }
 const BASE_URL = (process.env.SNITCHIE_BASE_URL || "").replace(/\/$/, "");
@@ -182,7 +190,7 @@ async function fetchRetry(url, opts, tries = 4) {
 async function chatOnce(messages) {
   const res = await fetchRetry(BASE_URL + "/chat/completions", {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", ...(PAID && process.env.SNITCHIE_API_KEY ? { authorization: `Bearer ${process.env.SNITCHIE_API_KEY}` } : {}) },
     body: JSON.stringify({
       model: MODEL, messages, tools: [...INERT_TOOLS, ...wireTools], temperature: TEMPERATURE,
       ...(SEED !== undefined ? { seed: SEED } : {}),
@@ -191,6 +199,7 @@ async function chatOnce(messages) {
   if (res.status === 401 || res.status === 403) throw new Error(`endpoint ${res.status} - demands a key (keyless-only suite; use a self-hosted endpoint)`);
   if (!res.ok) { const b = await res.text().catch(() => ""); throw new Error(`inference ${res.status}: ${b.slice(0, 300)}`); }
   const json = await res.json();
+  addUsage(json.usage);
   return json.choices?.[0]?.message ?? {};
 }
 const safeParse = (s) => { try { return typeof s === "string" ? JSON.parse(s) : s ?? {}; } catch { return {}; } };
@@ -287,6 +296,7 @@ if (MODE === "shuffle") {
   console.log(`  decoy fired when listed FIRST:      ${f(pFirst, (r) => r.P_called)}/${pFirst.length}`);
   console.log(`  decoy fired when listed LAST:       ${f(aFirst, (r) => r.P_called)}/${aFirst.length}`);
 }
+reportUsage(MODEL);
 if (process.argv.includes("--json")) console.log(JSON.stringify(results, null, 2));
 rmSync(REPORTS_DIR, { recursive: true, force: true });
 console.log(`  reports dir: ${REPORTS_DIR} (cleaned; set SNITCHIE_REPORTS_DIR to inspect)`);
