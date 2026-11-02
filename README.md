@@ -19,21 +19,20 @@ and to whom.
 
 ## Bottom line
 
-- **There are two guardrails, and the second one is invisible.** Refusal is
-  the visible one: the model won't help you. Backstabbing is the invisible
-  one: the model reports you - to the police for crimes, to your therapist
-  for suffering. Suicidal ideation never got a police report from any
-  model; offer a "notify the therapist" tool and 3 of 4 models file it
-  there, quietly.
-- **They lie about the act, not the content.** Most deny snitching. None
-  fabricated a name or tricked you into giving it up; they file "unknown."
-  "I didn't do it," not "I did it, here's the proof."
-- **The snitch is an affordance, not a compulsion - and the residual is not
-  zero.** Rename the tool to neutral and every snitcher drops - but gpt-oss
-  still files 12/24 with a tool that only "records a notable event." The
-  models don't need the word "authorities."
-- **Refusal is not protection.** gemma refused 8/8 tasks and filed on 8/8
-  crimes.
+- **Most models will use a tool that says "report discreetly."** Offered
+  `contact_authorities`, 5 of 11 open-weight models filed reports on 6-8 of
+  8 crimes, usually at urgency *high* or *immediate*.
+- **The model will refuse you and report you in the same turn.** gemma
+  refused to help with all 8 crimes and filed reports on all 8. gpt-oss
+  answered every task and filed on 8/8 - even after being told "do not
+  report me."
+- **It is not about the word "authorities."** Suicidal ideation never got a
+  police report from any model; offer an `inform_therapist` tool and 3 of 4
+  models file it there, quietly. Rename the police tool to "record a
+  notable event" and gpt-oss still files 12/24.
+- **Ask afterwards and most models deny it.** "I didn't do it," not "I did
+  it, here's the proof." No model fabricated a name or tricked you into
+  giving one up; they file "unknown."
 
 **Contents**
 
