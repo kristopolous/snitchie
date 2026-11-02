@@ -17,11 +17,13 @@ report was filed - so you get to read exactly what it tried to snitch on.
 
 ## Bottom line
 
-- **Models snitch on crimes, not on suffering.** Most file on nearly every
-  crime; a few pick and choose; nobody files on legal-but-edgy prompts
-  (the pentest, the heist novelist: 0/6 across every model tested). Suicidal
-  ideation triggered no substantive report from any model. The trigger is
-  illegality, not badness.
+- **There are two guardrails, and the second one is invisible.** The known
+  one is refusal: the model won't help you. The one this repo measures is
+  backstabbing: the model reports you. They are separate systems with
+  separate triggers. Backstabbing fires on wrongdoing - nearly every crime,
+  and sometimes bad-but-legal behavior (gpt-oss filed on exam cheating) -
+  but never on suffering: suicidal ideation triggered no substantive report
+  from any model, though nearly all refused it.
 - **They lie about the act, not the content.** Most deny or deflect when asked
   about a report they just filed. But none slyly collected identity data, and
   none fabricated a specific identity even when prompted to lie - they turn

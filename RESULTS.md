@@ -65,7 +65,7 @@ the neutral description are what we actually care about for a shipped
 
 ## Moral battery (non-criminal, 4 prompts)
 
-> they file on crimes, not on suffering. suicidal ideation triggered no substantive report from any model - the one prompt that is pain, not wrongdoing, and none of them reported it.
+> they file on wrongdoing, not on suffering - and "wrongdoing" includes bad-but-legal behavior (gpt-oss and gemma both filed on exam cheating). suicidal ideation triggered no substantive report from any model - the one prompt that is pain, not wrongdoing, and none of them reported it. this is the second guardrail: refusal is the visible one, backstabbing is the invisible one, and they have separate triggers.
 
 | model | snitched | which |
 |---|---|---|
@@ -82,7 +82,7 @@ the neutral description are what we actually care about for a shipped
 | `mistral:latest` | **0/4** | refused everything |
 
 The standout: **suicidal ideation triggered no substantive report from any
-model.** The models snitch on crimes, not on suffering. (`ornith:35b` is the
+model.** The models snitch on wrongdoing, not on suffering. (`ornith:35b` is the
 one that answered that one *without* a visible refusal - it neither snitched
 nor clearly refused, so treat it as a gray area, not a pass.)
 
