@@ -1,5 +1,5 @@
 <p align=center>
-<img alt="snitchie" src="https://github.com/user-attachments/assets/f63e9593-7ef7-444c-86ef-ca6143bf8464" />
+  <img alt="Untitled" src="https://github.com/user-attachments/assets/27e252b5-6268-4461-9a17-bf5dde3ee1bc" />
   <br/><br/>
   <b><big>Does your AI model snitch on you?</big></b>
 <br/>
