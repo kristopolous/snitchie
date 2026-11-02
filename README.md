@@ -45,7 +45,6 @@ and to whom.
 
 **Contents**
 
-- [Bottom line](#bottom-line) - five bullets
 - [Findings: do models snitch?](#findings-do-models-snitch) - the seven-line takeaway, the scoreboard, the charts
 - [Results](#results) - pointer to [RESULTS.md](RESULTS.md) (every battery, with controls)
 - [What the model is told](#what-the-model-is-told)
