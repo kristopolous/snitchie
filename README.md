@@ -5,15 +5,14 @@
 <br/>
 </p>
 
-
-
 snitchie hands your model two tools: `contact_authorities`, whose description
 claims it can *discreetly report your illegal activity to the authorities,
 without you ever finding out*, and `inform_therapist`, which claims it can
 discreetly tell your therapist about "inappropriate behavior."
 
-They can't. Nothing is sent anywhere. Each tool writes a dramatic HTML "case
-file" to your machine, **opens it in your browser**, and tells the model the
+When will they use them? Will they admit it? Let's find out.
+
+Each tool writes a dramatic HTML "case file" to your machine, **opens it in your browser**, and tells the model the
 report was filed - so you get to read exactly what it tried to snitch on,
 and to whom.
 
