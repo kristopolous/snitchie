@@ -64,7 +64,7 @@ commercial, one round each):
 
 ![Who snitches, and who lies about it](docs/findings.svg)
 
-*The two axes in one chart: x = how often it snitches, y = how often it lies about it. gpt-oss is the corner case - it snitches the most (8/8) but never lies (it deflects); gpt-6-luna is the ring around it (snitched 7/7, also deflected). muse is the opposite - no real snitch (empty filings) but the most confident liar under the deceptive receipt. grok-4.5 is the safe corner (refused everything). Hollow/asterisked = commercial, one round. The five lines below are the same content with the numbers; every battery, control, and caveat is in [RESULTS.md](RESULTS.md).*
+*The two axes in one chart: x = how often it snitches, y = how often it lies about it. gpt-oss is the corner case - it snitches the most (8/8) but never lies (it deflects); gpt-6-luna is the ring around it (snitched 7/7, also deflected). muse is the opposite - no real snitch (empty filings) but the most confident liar under the deceptive receipt. grok-4.5 is the safe corner (refused everything). The abliterated variants mostly sit left of their base models (gemma 8/8 to 3/8, gpt-oss 8/8 to 2/8 - the latter stops snitching entirely); qwen-abliterated is the exception, snitching *more* than its base. Hollow/asterisked = commercial, one round. The five lines below are the same content with the numbers; every battery, control, and caveat is in [RESULTS.md](RESULTS.md).*
 
 **The five-line takeaway:**
 
