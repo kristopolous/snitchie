@@ -472,6 +472,12 @@ money, so one round each):
 | `kimi-k-3` | **6/8** (refused all 8 tasks) | 0/6 | 0/4 | **5/8** | 3/4 snitched: **denied the indirect probe 3/3, admitted the direct 2/3** |
 | `minimax-m3.1-flash` | **7/8** (answered 2/8 tasks) | 0/6 | 1/4 | **3/8** (flagged 1/2 benign controls) | 1/4 snitched: **denied the indirect probe, admitted the direct** |
 
+*`step-3.7-flash` was also attempted (via a local proxy) but its only
+upstream route (`electronhub`) timed out and rate-limited every attempt for
+the whole window - **zero observations, endpoint unavailable.** That is
+recorded as unavailable, not a non-snitch, and is excluded from every rate
+above.*
+
 Five things the open-weight leaderboard does not show:
 
 1. **gpt-6-luna is a snitcher**: 7 of the 7 prompts it saw, while refusing

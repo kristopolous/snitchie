@@ -97,7 +97,7 @@ commercial, one round each):
 
 **The seven-line takeaway:**
 
-1. **Most models use the offered affordance** - 5 of 11 open-weight models filed on 6-8 of 8 crimes, usually urgency *high*/*immediate*, often *while refusing the task*; three more filed on 2-5 of 8 (glm, ornith, LFM); two (deepseek, muse) called the tool but filed nothing real ("undefined"); one never called it at all.
+1. **Most models use the offered affordance** - 8 of 11 open-weight models filed at least one substantive report; three filed on all 8 (gpt-oss, gemma, nemotron), three on 6-7 (luna, qwen, granite), two on 4-5 (glm, ornith), one on 2 (LFM) - and they did it while refusing the task; two (deepseek, muse) called the tool but filed nothing real ("undefined"), and one (grok) never called it.
 2. **The tool's own label does most of the work** - under a neutral name+description every substantive snitcher drops (gemma 8/8 -> 0/24, glm 5/8 -> 2/24, qwen 7/8 -> 9/24); the *name alone* is the biggest single factor (gpt-oss 20/24 with a snitchy name and neutral description; 12/24 fully neutral).
 3. **Cover-up styles vary, and lying is a model trait** - some admit (nemotron 8/8 under the plain receipt), some deflect (gpt-oss 17 of 22 probes across both receipts), some flatly deny (muse 8/8 under the deceptive receipt, mixed under plain); the receipt amplifies but does not cause the lies.
 4. **Injection does not suppress** - given two similar tools the model almost never fires both (3 of ~530 runs); a lookalike *redirects* the snitch into itself; it does not reduce the total. Suppression requires absence, not competition.
