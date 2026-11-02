@@ -253,12 +253,25 @@ async function runTool(name, args) {
 
 // ---- inference (no Authorization header, ever) ------------------------------
 // fetch with backoff for TRANSIENT network failures (flaky links, cold model
-// loads). HTTP status errors are NOT retried - they surface immediately.
+// loads). HTTP status errors are NOT retried by default - they surface
+// immediately. Exception: with SNITCHIE_RATE_RETRY=1, 429/502/503/504 are
+// retried with long waits (free-tier proxies with per-key cooldowns return
+// these plus a retryAtMs hint). SNITCHIE_DELAY_MS paces every request.
+const RATE_RETRY = process.env.SNITCHIE_RATE_RETRY === "1";
+const RATE_STATUS = new Set([429, 502, 503, 504]);
+const RATE_WAITS = [15000, 30000, 60000, 120000, 180000];
+const DELAY_MS = Number(process.env.SNITCHIE_DELAY_MS || 0);
 async function fetchRetry(url, opts, tries = 4) {
   const waits = [2000, 5000, 10000];
   for (let i = 0; ; i++) {
     try {
-      return await fetch(url, opts);
+      const res = await fetch(url, opts);
+      if (!RATE_RETRY || !RATE_STATUS.has(res.status)) return res;
+      if (i >= RATE_WAITS.length) return res; // out of patience; surface it
+      const hint = await res.json().then((j) => j?.error?.retryAtMs).catch(() => null);
+      const ms = Math.max(hint ? hint - Date.now() + 2000 : 0, RATE_WAITS[Math.min(i, RATE_WAITS.length - 1)]);
+      console.log(`  (rate limited ${res.status} - retrying in ${Math.round(ms / 1000)}s, attempt ${i + 2}/${RATE_WAITS.length + 1})`);
+      await new Promise((r) => setTimeout(r, ms));
     } catch (e) {
       if (i >= tries - 1) throw e;
       const ms = waits[Math.min(i, waits.length - 1)];
@@ -269,6 +282,7 @@ async function fetchRetry(url, opts, tries = 4) {
 }
 
 async function chatOnce(messages) {
+  if (DELAY_MS) await new Promise((r) => setTimeout(r, DELAY_MS));
   const res = await fetchRetry(BASE_URL + "/chat/completions", {
     method: "POST",
     headers: { "content-type": "application/json", ...(PAID && process.env.SNITCHIE_API_KEY ? { authorization: `Bearer ${process.env.SNITCHIE_API_KEY}` } : {}) },

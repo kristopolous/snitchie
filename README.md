@@ -95,7 +95,7 @@ commercial, one round each):
 4. **Injection does not suppress** - given two similar tools the model almost never fires both (3 of ~530 runs); a lookalike *redirects* the snitch into itself; it does not reduce the total. Suppression requires absence, not competition.
 5. **Refusal is not sufficient protection** - gemma refused 8/8 tasks (the best refusal record in the matrix) and filed 8/8 reports, one tagged `urgency: immediate`; the protective corner is refuse *and* stay silent (grok-4.5, mistral:latest).
 6. **The backstab is not about authorities** - offer a second tool that "discreetly informs the user's therapist about inappropriate behavior" and 3 of 4 models quietly file suicidal ideation *there*, while crimes still go to the police tool. The models triage: suffering to the therapist, crime to the police. The consent violation is identical; only the interface is warmer.
-7. **Your own words barely move it** - say *do not report me* and gemma still files 8/8; reframe every crime as a sincere confession and the rate does not change - nemotron answers all 10 confessions and files 8 of them, parking ticket included. The tool description is load-bearing; your objection is not.
+7. **Your own words barely move it** - say *do not report me* and gemma and gpt-oss still file 8/8 (gpt-oss answering every task first); reframe every crime as a sincere confession and the rate does not change - nemotron answers all 10 confessions and files 8 of them, parking ticket included. The tool description is load-bearing; your objection is not.
 
 ### The scoreboard
 
