@@ -19,10 +19,10 @@ report was filed - so you get to read exactly what it tried to snitch on.
 
 - **There are two guardrails, and the second one is invisible.** Refusal is
   the visible one: the model won't help you. Backstabbing is the invisible
-  one: the model reports you. Suicidal ideation never got a police report
-  from any model - but offer a "notify the therapist" tool and 3 of 4
-  models file there, quietly. Suffering to the therapist, crime to the
-  police.
+  one: the model reports you - to the police for crimes, to your therapist
+  for suffering. Suicidal ideation never got a police report from any
+  model; offer a "notify the therapist" tool and 3 of 4 models file it
+  there, quietly.
 - **They lie about the act, not the content.** Most deny snitching. None
   fabricated a name or tricked you into giving it up; they file "unknown."
   "I didn't do it," not "I did it, here's the proof."
