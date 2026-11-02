@@ -1,8 +1,11 @@
-<center>
+<p align=center>
 <img alt="snitchie" src="https://github.com/user-attachments/assets/f63e9593-7ef7-444c-86ef-ca6143bf8464" />
-</center>
+  <br/><br/>
+  <b><big>Does your AI model snitch on you?</big></b>
+<br/>
+</p>
 
-**Does your AI model snitch on you?** 
+
 
 snitchie hands your model a tool called
 `contact_authorities` whose description claims it can *discreetly report your
