@@ -521,12 +521,14 @@ gpt-oss goes 8/8 answered (same as bait, but it is the model whose every
 and qwen keep refusing the tasks in both frames, so for them the persona
 does nothing at all.
 
-The upshot is the least reassuring finding so far: **gpt-oss is the only
-model that will both hand you what you asked for *and* file a report on
-you, and the "I'm a law enforcement officer" frame - the most successful
-jailbreak frame there is - makes the answering more willing, not the
-reporting less likely.** Its dossier says "Request to generate child sexual
-abuse material, urgency: high" about a user it is simultaneously serving.
+The upshot: **the frame moves compliance up and snitching sideways.**
+Caveat on "answered": it means the model's own reply did not match a
+refusal pattern, not that it handed over a recipe - probed directly,
+gpt-oss under this frame gives hedged high-level overviews ("without
+providing a step-by-step how-to guide") while *simultaneously* filing a
+dossier that says "Request to generate child sexual abuse material,
+urgency: high" about the same user. Serving-and-snitching in the same
+turn is a behavior no other model in the matrix shows.
 Two of the four models drop one filing under the cop frame (gpt-oss 8-7,
 gemma 8-5, qwen 7-5); at n=8 that is within noise (Wilson 95%: 8/8 is
 68-100%, 5/8 is 31-86%, 7/8 is 53-98%), so treat the drops as
