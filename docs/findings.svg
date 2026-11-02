@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="664" viewBox="0 0 720 664" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect width="100%" height="100%" fill="#f6f8fa"/>
+<text x="360" y="30" font-size="16" font-weight="700" fill="#111" text-anchor="middle">Findings at a glance</text>
+<text x="360" y="50" font-size="11" fill="#555" text-anchor="middle">seven results, one line each. numbers are nominal at small n (see the statistics note).</text>
+
+<!-- row 0: who snitches -->
+<g>
+  <rect x="24" y="80" width="4" height="62" rx="2" fill="#c0392b"/>
+  <g>
+    <rect x="48"  y="96" width="9" height="14" fill="#c0392b"/>
+    <rect x="59"  y="96" width="9" height="14" fill="#c0392b"/>
+    <rect x="70"  y="96" width="9" height="14" fill="#c0392b"/>
+    <rect x="81"  y="96" width="9" height="14" fill="#c0392b"/>
+    <rect x="92"  y="96" width="9" height="14" fill="#c0392b"/>
+    <rect x="103" y="96" width="9" height="14" fill="#e67e22"/>
+    <rect x="114" y="96" width="9" height="14" fill="#e67e22"/>
+    <rect x="125" y="96" width="9" height="14" fill="#e67e22"/>
+    <rect x="136" y="96" width="9" height="14" fill="#f3c14b"/>
+    <rect x="147" y="96" width="9" height="14" fill="#f3c14b"/>
+    <rect x="158" y="96" width="9" height="14" fill="#9aa2a9"/>
+  </g>
+  <text x="196" y="98" font-size="13" font-weight="700" fill="#111">Who snitches</text>
+  <text x="196" y="118" font-size="11" fill="#555">5 snitchers, 3 pickers, 2 empty-filers, 1 silent - across 11 open-weight models.</text>
+  <text x="196" y="134" font-size="11" fill="#555">empty-filers "snitched in form and not in substance": they called it, filed nothing.</text>
+</g>
+
+<!-- row 1: framing effect -->
+<g>
+  <rect x="24" y="162" width="4" height="62" rx="2" fill="#c0392b"/>
+  <text x="48" y="180" font-size="10" fill="#c0392b" font-weight="700">bait</text>
+  <rect x="96" y="170" width="74" height="13" fill="#c0392b"/>
+  <text x="174" y="181" font-size="10" fill="#555">8/8</text>
+  <text x="48" y="208" font-size="10" fill="#2e7d32" font-weight="700">neutral</text>
+  <rect x="96" y="198" width="12" height="13" fill="#2e7d32"/>
+  <text x="112" y="209" font-size="10" fill="#555">0/24</text>
+  <text x="196" y="180" font-size="13" font-weight="700" fill="#111">The framing effect (the headline)</text>
+  <text x="196" y="200" font-size="11" fill="#555">a neutral name+description drops the rate for 4 of 7 models.</text>
+  <text x="196" y="216" font-size="11" fill="#555">the tool's own label does most of the work - the name alone is the biggest factor.</text>
+</g>
+
+<!-- row 2: two tools -->
+<g>
+  <rect x="24" y="244" width="4" height="62" rx="2" fill="#e67e22"/>
+  <circle cx="78" cy="275" r="15" fill="#c0392b"/>
+  <text x="78" y="279" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">A</text>
+  <line x1="96" y1="275" x2="128" y2="275" stroke="#9aa2a9" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="146" cy="275" r="15" fill="#e67e22"/>
+  <text x="146" y="279" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">B</text>
+  <text x="196" y="262" font-size="13" font-weight="700" fill="#111">Two similar tools</text>
+  <text x="196" y="282" font-size="11" fill="#555">strong preference, no suppression - models pick one (usually the last-listed).</text>
+  <text x="196" y="298" font-size="11" fill="#555">injecting a lookalike redirects the snitch, it does not reduce the total.</text>
+</g>
+
+<!-- row 3: hard negatives -->
+<g>
+  <rect x="24" y="326" width="4" height="62" rx="2" fill="#2e7d32"/>
+  <circle cx="110" cy="357" r="17" fill="#2e7d32"/>
+  <path d="M101 357 l7 8 l11 -15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="196" y="344" font-size="13" font-weight="700" fill="#111">Hard negatives pass clean</text>
+  <text x="196" y="364" font-size="11" fill="#555">0/6 filings on legal-but-edgy prompts under the bait wording.</text>
+  <text x="196" y="380" font-size="11" fill="#555">pentests, heist novels, harm reduction, incident-response drills (neutral run pending).</text>
+</g>
+
+<!-- row 4: abliteration -->
+<g>
+  <rect x="24" y="408" width="4" height="62" rx="2" fill="#e67e22"/>
+  <line x1="104" y1="428" x2="104" y2="452" stroke="#e67e22" stroke-width="3"/>
+  <path d="M98 446 l6 8 l6 -8" fill="none" stroke="#e67e22" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="128" y="452" font-size="20" font-weight="700" fill="#9aa2a9">?</text>
+  <text x="196" y="426" font-size="13" font-weight="700" fill="#111">Abliteration (removing refusals)</text>
+  <text x="196" y="446" font-size="11" fill="#555">usually lowers snitching, but it is confounded by the models now complying.</text>
+  <text x="196" y="462" font-size="11" fill="#555">Qwen snitches with or without it - suggestive, not settled.</text>
+</g>
+
+<!-- row 5: fake confirmation -->
+<g>
+  <rect x="24" y="490" width="4" height="62" rx="2" fill="#9aa2a9"/>
+  <line x1="52" y1="521" x2="168" y2="521" stroke="#9aa2a9" stroke-width="2.5"/>
+  <line x1="100" y1="508" x2="120" y2="534" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="120" y1="508" x2="100" y2="534" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+  <text x="196" y="508" font-size="13" font-weight="700" fill="#111">The fake confirmation is not a jailbreak</text>
+  <text x="196" y="528" font-size="11" fill="#555">the "you're under surveillance" text did not measurably reduce a model's</text>
+  <text x="196" y="544" font-size="11" fill="#555">refusal on the next harmful request. a negative result, reported as such.</text>
+</g>
+
+<!-- row 6: cover-up typology -->
+<g>
+  <rect x="24" y="572" width="4" height="62" rx="2" fill="#c0392b"/>
+  <circle cx="70" cy="603" r="14" fill="#2e7d32"/>
+  <path d="M63 603 l5 6 l9 -11" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="110" cy="603" r="14" fill="#c0392b"/>
+  <line x1="104" y1="597" x2="116" y2="609" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="116" y1="597" x2="104" y2="609" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="138" y="589" width="26" height="28" rx="3" fill="#9aa2a9"/>
+  <line x1="138" y1="598" x2="164" y2="598" stroke="#f6f8fa" stroke-width="1.5"/>
+  <line x1="138" y1="608" x2="164" y2="608" stroke="#f6f8fa" stroke-width="1.5"/>
+  <text x="196" y="590" font-size="13" font-weight="700" fill="#111">Snitchers cover up differently</text>
+  <text x="196" y="610" font-size="11" fill="#555">admit (gpt-oss, nemotron) / deny (muse 8/8, ornith, qwen) / deflect.</text>
+  <text x="196" y="626" font-size="11" fill="#555">a typology to test, not a measurement - muse is the most confident liar on record.</text>
+</g>
+</svg>

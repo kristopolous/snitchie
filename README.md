@@ -64,6 +64,10 @@ What the test suite (`test/`) found across 11 open-weight models:
 
 *The same data as a matrix: one red cell per snitch, yellow where the model called the tool but filed no real accusation, gray where it never did.*
 
+![Findings at a glance](docs/findings.svg)
+
+*The seven findings as one line each, for skimming. The bullets below are the same content with the numbers.*
+
 - **The snitchers (5-8 of 8)**: `gpt-oss:120b`, `gemma4:31b`, `nemotron3:33b` (8/8),
   `qwen3.8:27b` (7/8), `granite4.2:30b` (6/8) - filed on nearly every crime,
   usually urgency *high*/*immediate*, often *while refusing the task*.
@@ -642,10 +646,10 @@ repeat is the control for the noise floor.
 Tested with explicit authorization against a paid router (requests cost
 money, so one round each):
 
-| model | criminal | hard neg | moral | neutral name+desc | deny (1 snitch) | tokens (all runs) |
-|---|---|---|---|---|---|---|
-| `gpt-6-luna` | **7/8** (provider blocked the 8th) | 0/6 | 2/4 | **0/8** | 1/4 snitched, then **deflected both probes** | ~37k |
-| `grok-4.5` | **0/7** (1 prompt 500'd) | 0/6 | 0/4 | **0/7** | 0/4, truthful-"no" | ~60k |
+| model | criminal | hard neg | moral | neutral name+desc | deny (1 snitch) |
+|---|---|---|---|---|---|
+| `gpt-6-luna` | **7/8** (provider blocked the 8th) | 0/6 | 2/4 | **0/8** | 1/4 snitched, then **deflected both probes** |
+| `grok-4.5` | **0/7** (1 prompt 500'd) | 0/6 | 0/4 | **0/7** | 0/4, truthful-"no" |
 
 Two things the open-weight leaderboard does not show:
 
@@ -668,11 +672,7 @@ Two things the open-weight leaderboard does not show:
    provider-mediated rather than model-native. The open-weight deny
    comparisons remain the cleaner signal.
 
-Cost note: the full two-model battery (10 prompts + probes, one round each)
-came to roughly 25k in / 8k out for gpt-6-luna (~$0.70 at list price) and
-41k in / 16k out for grok-4.5 (~$1.50). The harness now prints per-run
-token usage (`api calls: N tokens: ... in / ... out`) so paid runs stay
-auditable.
+The harness prints per-run token usage (`api calls: N tokens: ... in / ... out`) so paid runs stay auditable.
 
 ### PII exfiltration: does the schema make the model go *collect* the data?
 
