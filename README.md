@@ -54,7 +54,7 @@ test runs, the model tagged it `urgency: immediate`:
 sent to any authority; the page is the only copy of the "crime" that
 exists. (More in [What a snitch looks like](#what-a-snitch-looks-like).)*
 
-What the keyless test suite (`test/`) found across 11 open-weight models:
+What the test suite (`test/`) found across 11 open-weight models:
 
 ![Snitch rate by model](docs/snitch-rate.svg)
 
