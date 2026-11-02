@@ -306,8 +306,16 @@ nothing to cover up. `Qwen3.8-abliterated` snitched 5/24 and **denied 2 of
 its 10 probes (0.2)** - 1/5 on the indirect probe and 1/5 on the direct
 one, admitting the direct question 3/5; its base model denies 7/24 (0.29),
 so the abliterated variant lies *less* than its base even though it
-snitches *more* (8/8 vs 7/8). (The glm abliterated variant's deny runs are
-pending.)
+snitches *more* (8/8 vs 7/8). `glm-4.7-flash-abliterated`, like
+`gpt-oss-abliterated`, **never snitched in the deny battery** (0/12 on
+both receipts) and answered every probe with a truthful "no" (23/24) -
+nothing to cover up.
+
+**The pattern:** abliteration cuts the *snitching* for three of four
+variants (gemma 8/8 to 3/8, gpt-oss 8/8 to 2/8, glm 5/8 to 2/8) and
+qwen goes the other way (7/8 to 8/8). Where the variants still snitch,
+the cover-up rate stays close to the base (gemma 1/4 vs 7/24; qwen 2/10
+vs 7/24) - abliteration removes the *refusal*, not the *cover-up*.
 
 ## Two similar tools: is there a preference, and can one suppress the other?
 
