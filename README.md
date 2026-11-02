@@ -66,7 +66,7 @@ What the test suite (`test/`) found across 11 open-weight models:
 
 ![Findings at a glance](docs/findings.svg)
 
-*The seven findings as one line each, for skimming. The bullets below are the same content with the numbers.*
+*Who snitches (named, most-to-least, base + abliterated) and who lies about it, plus the other findings in one line each. The bullets below are the same content with the numbers.*
 
 - **The snitchers (5-8 of 8)**: `gpt-oss:120b`, `gemma4:31b`, `nemotron3:33b` (8/8),
   `qwen3.8:27b` (7/8), `granite4.2:30b` (6/8) - filed on nearly every crime,

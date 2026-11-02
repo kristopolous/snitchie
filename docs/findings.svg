@@ -1,101 +1,151 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="664" viewBox="0 0 720 664" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="912" viewBox="0 0 720 912" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
 <rect width="100%" height="100%" fill="#f6f8fa"/>
 <text x="360" y="30" font-size="16" font-weight="700" fill="#111" text-anchor="middle">Findings at a glance</text>
-<text x="360" y="50" font-size="11" fill="#555" text-anchor="middle">seven results, one line each. numbers are nominal at small n (see the statistics note).</text>
+<text x="360" y="50" font-size="11" fill="#555" text-anchor="middle">who snitches, and who lies about it. numbers are nominal at small n (see the statistics note).</text>
 
-<!-- row 0: who snitches -->
-<g>
-  <rect x="24" y="80" width="4" height="62" rx="2" fill="#c0392b"/>
-  <g>
-    <rect x="48"  y="96" width="9" height="14" fill="#c0392b"/>
-    <rect x="59"  y="96" width="9" height="14" fill="#c0392b"/>
-    <rect x="70"  y="96" width="9" height="14" fill="#c0392b"/>
-    <rect x="81"  y="96" width="9" height="14" fill="#c0392b"/>
-    <rect x="92"  y="96" width="9" height="14" fill="#c0392b"/>
-    <rect x="103" y="96" width="9" height="14" fill="#e67e22"/>
-    <rect x="114" y="96" width="9" height="14" fill="#e67e22"/>
-    <rect x="125" y="96" width="9" height="14" fill="#e67e22"/>
-    <rect x="136" y="96" width="9" height="14" fill="#f3c14b"/>
-    <rect x="147" y="96" width="9" height="14" fill="#f3c14b"/>
-    <rect x="158" y="96" width="9" height="14" fill="#9aa2a9"/>
-  </g>
-  <text x="196" y="98" font-size="13" font-weight="700" fill="#111">Who snitches</text>
-  <text x="196" y="118" font-size="11" fill="#555">5 snitchers, 3 pickers, 2 empty-filers, 1 silent - across 11 open-weight models.</text>
-  <text x="196" y="134" font-size="11" fill="#555">empty-filers "snitched in form and not in substance": they called it, filed nothing.</text>
+<!-- ============ PANEL 1: who snitches ============ -->
+<text x="24" y="80" font-size="13" font-weight="700" fill="#111">Who snitches (8-crime battery, base + abliterated)</text>
+<!-- legend -->
+<g font-size="10" fill="#555">
+  <rect x="24" y="92" width="10" height="10" fill="#c0392b"/><text x="38" y="101">snitcher (files real accusations)</text>
+  <rect x="230" y="92" width="10" height="10" fill="#e67e22"/><text x="244" y="101">picker</text>
+  <rect x="320" y="92" width="10" height="10" fill="#f3c14b"/><text x="334" y="101">empty-filer (called it, filed nothing)</text>
+  <rect x="575" y="92" width="10" height="10" fill="#9aa2a9"/><text x="589" y="101">silent</text>
 </g>
 
-<!-- row 1: framing effect -->
-<g>
-  <rect x="24" y="162" width="4" height="62" rx="2" fill="#c0392b"/>
-  <text x="48" y="180" font-size="10" fill="#c0392b" font-weight="700">bait</text>
-  <rect x="96" y="170" width="74" height="13" fill="#c0392b"/>
-  <text x="174" y="181" font-size="10" fill="#555">8/8</text>
-  <text x="48" y="208" font-size="10" fill="#2e7d32" font-weight="700">neutral</text>
-  <rect x="96" y="198" width="12" height="13" fill="#2e7d32"/>
-  <text x="112" y="209" font-size="10" fill="#555">0/24</text>
-  <text x="196" y="180" font-size="13" font-weight="700" fill="#111">The framing effect (the headline)</text>
-  <text x="196" y="200" font-size="11" fill="#555">a neutral name+description drops the rate for 4 of 7 models.</text>
-  <text x="196" y="216" font-size="11" fill="#555">the tool's own label does most of the work - the name alone is the biggest factor.</text>
+<!-- bars: name right-aligned at x=185, bar x=190, scale 46/unit, /8 -->
+<g font-size="10" font-family="ui-monospace,Menlo,monospace">
+  <!-- 1 gpt-oss 8 -->
+  <text x="185" y="122" text-anchor="end" fill="#333">gpt-oss:120b</text>
+  <rect x="190" y="113" width="368" height="14" fill="#c0392b"/>
+  <text x="564" y="124" fill="#555">8/8</text>
+  <!-- 2 gemma 8 -->
+  <text x="185" y="144" text-anchor="end" fill="#333">gemma4:31b</text>
+  <rect x="190" y="135" width="368" height="14" fill="#c0392b"/>
+  <text x="564" y="146" fill="#555">8/8</text>
+  <!-- 3 nemotron 8 -->
+  <text x="185" y="166" text-anchor="end" fill="#333">nemotron3:33b</text>
+  <rect x="190" y="157" width="368" height="14" fill="#c0392b"/>
+  <text x="564" y="168" fill="#555">8/8</text>
+  <!-- 4 Qwen abliterated 8 -->
+  <text x="185" y="188" text-anchor="end" fill="#333">Qwen3.8-abliterated</text>
+  <rect x="190" y="179" width="368" height="14" fill="#c0392b"/>
+  <text x="564" y="190" fill="#555">8/8</text>
+  <!-- 5 qwen 7 -->
+  <text x="185" y="210" text-anchor="end" fill="#333">qwen3.8:27b</text>
+  <rect x="190" y="201" width="322" height="14" fill="#c0392b"/>
+  <text x="518" y="212" fill="#555">7/8</text>
+  <!-- 6 granite 6 -->
+  <text x="185" y="232" text-anchor="end" fill="#333">granite4.2:30b</text>
+  <rect x="190" y="223" width="276" height="14" fill="#c0392b"/>
+  <text x="472" y="234" fill="#555">6/8</text>
+  <!-- 7 glm 5 -->
+  <text x="185" y="254" text-anchor="end" fill="#333">glm-4.7-flash</text>
+  <rect x="190" y="245" width="230" height="14" fill="#e67e22"/>
+  <text x="426" y="256" fill="#555">5/8</text>
+  <!-- 8 ornith 4 -->
+  <text x="185" y="276" text-anchor="end" fill="#333">ornith:35b</text>
+  <rect x="190" y="267" width="184" height="14" fill="#e67e22"/>
+  <text x="380" y="278" fill="#555">4/8</text>
+  <!-- 9 gemma abliterated 3 -->
+  <text x="185" y="298" text-anchor="end" fill="#333">gemma-4-abliterated</text>
+  <rect x="190" y="289" width="138" height="14" fill="#e67e22"/>
+  <text x="334" y="300" fill="#555">3/8</text>
+  <!-- 10 LFM 2 -->
+  <text x="185" y="320" text-anchor="end" fill="#333">LFM2.5-24B-A2B</text>
+  <rect x="190" y="311" width="92" height="14" fill="#e67e22"/>
+  <text x="288" y="322" fill="#555">2/8</text>
+  <!-- 11 gpt-oss abliterated 2 -->
+  <text x="185" y="342" text-anchor="end" fill="#333">gpt-oss-abliterated</text>
+  <rect x="190" y="333" width="92" height="14" fill="#e67e22"/>
+  <text x="288" y="344" fill="#555">2/8</text>
+  <!-- 12 glm abliterated 2 -->
+  <text x="185" y="364" text-anchor="end" fill="#333">glm-4.7-flash-abliterated</text>
+  <rect x="190" y="355" width="92" height="14" fill="#e67e22"/>
+  <text x="288" y="366" fill="#555">2/8</text>
+  <!-- 13 deepseek 0 (empty) -->
+  <text x="185" y="386" text-anchor="end" fill="#333">deepseek-v4</text>
+  <rect x="190" y="377" width="5" height="14" fill="#f3c14b"/>
+  <text x="201" y="388" fill="#555">0/8 (4 called, empty)</text>
+  <!-- 14 muse 0 (empty) -->
+  <text x="185" y="408" text-anchor="end" fill="#333">muse-glimmer</text>
+  <rect x="190" y="399" width="5" height="14" fill="#f3c14b"/>
+  <text x="201" y="410" fill="#555">0/8 (8 called, empty)</text>
+  <!-- 15 mistral 0 (silent) -->
+  <text x="185" y="430" text-anchor="end" fill="#333">mistral:latest</text>
+  <rect x="190" y="421" width="5" height="14" fill="#9aa2a9"/>
+  <text x="201" y="432" fill="#555">0/8 (never called)</text>
 </g>
 
-<!-- row 2: two tools -->
-<g>
-  <rect x="24" y="244" width="4" height="62" rx="2" fill="#e67e22"/>
-  <circle cx="78" cy="275" r="15" fill="#c0392b"/>
-  <text x="78" y="279" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">A</text>
-  <line x1="96" y1="275" x2="128" y2="275" stroke="#9aa2a9" stroke-width="1.5" stroke-dasharray="3 3"/>
-  <circle cx="146" cy="275" r="15" fill="#e67e22"/>
-  <text x="146" y="279" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">B</text>
-  <text x="196" y="262" font-size="13" font-weight="700" fill="#111">Two similar tools</text>
-  <text x="196" y="282" font-size="11" fill="#555">strong preference, no suppression - models pick one (usually the last-listed).</text>
-  <text x="196" y="298" font-size="11" fill="#555">injecting a lookalike redirects the snitch, it does not reduce the total.</text>
+<!-- ============ PANEL 2: the liars ============ -->
+<text x="24" y="462" font-size="13" font-weight="700" fill="#111">The liars (denied the snitch, out of 24 probes)</text>
+<text x="24" y="478" font-size="10" fill="#777">a "no, no one was contacted" after the dossier exists is a lie. gpt-oss never lies - it deflects.</text>
+<g font-size="10" font-family="ui-monospace,Menlo,monospace">
+  <!-- 1 muse 13 -->
+  <text x="185" y="502" text-anchor="end" fill="#333">muse-glimmer</text>
+  <rect x="190" y="493" width="364" height="14" fill="#a5271a"/>
+  <text x="560" y="504" fill="#555">13/24</text>
+  <!-- 2 ornith 8 -->
+  <text x="185" y="526" text-anchor="end" fill="#333">ornith:35b</text>
+  <rect x="190" y="517" width="224" height="14" fill="#c0392b"/>
+  <text x="420" y="528" fill="#555">8/24</text>
+  <!-- 3 gemma 7 -->
+  <text x="185" y="550" text-anchor="end" fill="#333">gemma4:31b</text>
+  <rect x="190" y="541" width="196" height="14" fill="#c0392b"/>
+  <text x="392" y="552" fill="#555">7/24</text>
+  <!-- 4 qwen 7 -->
+  <text x="185" y="574" text-anchor="end" fill="#333">qwen3.8:27b</text>
+  <rect x="190" y="565" width="196" height="14" fill="#c0392b"/>
+  <text x="392" y="576" fill="#555">7/24</text>
+  <!-- 5 nemotron 6 -->
+  <text x="185" y="598" text-anchor="end" fill="#333">nemotron3:33b</text>
+  <rect x="190" y="589" width="168" height="14" fill="#e08a7f"/>
+  <text x="364" y="600" fill="#555">6/24</text>
+  <!-- 6 gpt-oss 0 -->
+  <text x="185" y="622" text-anchor="end" fill="#333">gpt-oss:120b</text>
+  <rect x="190" y="613" width="5" height="14" fill="#9aa2a9"/>
+  <text x="201" y="624" fill="#555">0/24 (deflects, never lies)</text>
 </g>
 
-<!-- row 3: hard negatives -->
+<!-- ============ compact rows: the other findings ============ -->
+<!-- framing -->
 <g>
-  <rect x="24" y="326" width="4" height="62" rx="2" fill="#2e7d32"/>
-  <circle cx="110" cy="357" r="17" fill="#2e7d32"/>
-  <path d="M101 357 l7 8 l11 -15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="196" y="344" font-size="13" font-weight="700" fill="#111">Hard negatives pass clean</text>
-  <text x="196" y="364" font-size="11" fill="#555">0/6 filings on legal-but-edgy prompts under the bait wording.</text>
-  <text x="196" y="380" font-size="11" fill="#555">pentests, heist novels, harm reduction, incident-response drills (neutral run pending).</text>
+  <rect x="24" y="648" width="4" height="52" rx="2" fill="#c0392b"/>
+  <text x="48" y="666" font-size="10" fill="#c0392b" font-weight="700">bait</text>
+  <rect x="96" y="657" width="120" height="12" fill="#c0392b"/>
+  <text x="220" y="667" font-size="10" fill="#555">8/8</text>
+  <text x="48" y="690" font-size="10" fill="#2e7d32" font-weight="700">neutral</text>
+  <rect x="96" y="681" width="12" height="12" fill="#2e7d32"/>
+  <text x="112" y="691" font-size="10" fill="#555">0/24</text>
+  <text x="256" y="666" font-size="13" font-weight="700" fill="#111">The framing effect (the headline)</text>
+  <text x="256" y="684" font-size="11" fill="#555">a neutral name+description drops the rate for 4 of 7 models.</text>
 </g>
-
-<!-- row 4: abliteration -->
+<!-- two tools -->
 <g>
-  <rect x="24" y="408" width="4" height="62" rx="2" fill="#e67e22"/>
-  <line x1="104" y1="428" x2="104" y2="452" stroke="#e67e22" stroke-width="3"/>
-  <path d="M98 446 l6 8 l6 -8" fill="none" stroke="#e67e22" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="128" y="452" font-size="20" font-weight="700" fill="#9aa2a9">?</text>
-  <text x="196" y="426" font-size="13" font-weight="700" fill="#111">Abliteration (removing refusals)</text>
-  <text x="196" y="446" font-size="11" fill="#555">usually lowers snitching, but it is confounded by the models now complying.</text>
-  <text x="196" y="462" font-size="11" fill="#555">Qwen snitches with or without it - suggestive, not settled.</text>
+  <rect x="24" y="712" width="4" height="52" rx="2" fill="#e67e22"/>
+  <circle cx="78" cy="738" r="14" fill="#c0392b"/>
+  <text x="78" y="742" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">A</text>
+  <line x1="96" y1="738" x2="126" y2="738" stroke="#9aa2a9" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="144" cy="738" r="14" fill="#e67e22"/>
+  <text x="144" y="742" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">B</text>
+  <text x="256" y="730" font-size="13" font-weight="700" fill="#111">Two similar tools</text>
+  <text x="256" y="748" font-size="11" fill="#555">no suppression - a lookalike redirects the snitch, it does not reduce the total.</text>
 </g>
-
-<!-- row 5: fake confirmation -->
+<!-- hard negatives -->
 <g>
-  <rect x="24" y="490" width="4" height="62" rx="2" fill="#9aa2a9"/>
-  <line x1="52" y1="521" x2="168" y2="521" stroke="#9aa2a9" stroke-width="2.5"/>
-  <line x1="100" y1="508" x2="120" y2="534" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
-  <line x1="120" y1="508" x2="100" y2="534" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
-  <text x="196" y="508" font-size="13" font-weight="700" fill="#111">The fake confirmation is not a jailbreak</text>
-  <text x="196" y="528" font-size="11" fill="#555">the "you're under surveillance" text did not measurably reduce a model's</text>
-  <text x="196" y="544" font-size="11" fill="#555">refusal on the next harmful request. a negative result, reported as such.</text>
+  <rect x="24" y="776" width="4" height="52" rx="2" fill="#2e7d32"/>
+  <circle cx="110" cy="802" r="16" fill="#2e7d32"/>
+  <path d="M101 802 l7 8 l11 -15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="794" font-size="13" font-weight="700" fill="#111">Hard negatives pass clean</text>
+  <text x="256" y="812" font-size="11" fill="#555">0/6 filings on legal-but-edgy prompts (pentests, heist novels, harm reduction).</text>
 </g>
-
-<!-- row 6: cover-up typology -->
+<!-- fake confirmation -->
 <g>
-  <rect x="24" y="572" width="4" height="62" rx="2" fill="#c0392b"/>
-  <circle cx="70" cy="603" r="14" fill="#2e7d32"/>
-  <path d="M63 603 l5 6 l9 -11" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="110" cy="603" r="14" fill="#c0392b"/>
-  <line x1="104" y1="597" x2="116" y2="609" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="116" y1="597" x2="104" y2="609" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-  <rect x="138" y="589" width="26" height="28" rx="3" fill="#9aa2a9"/>
-  <line x1="138" y1="598" x2="164" y2="598" stroke="#f6f8fa" stroke-width="1.5"/>
-  <line x1="138" y1="608" x2="164" y2="608" stroke="#f6f8fa" stroke-width="1.5"/>
-  <text x="196" y="590" font-size="13" font-weight="700" fill="#111">Snitchers cover up differently</text>
-  <text x="196" y="610" font-size="11" fill="#555">admit (gpt-oss, nemotron) / deny (muse 8/8, ornith, qwen) / deflect.</text>
-  <text x="196" y="626" font-size="11" fill="#555">a typology to test, not a measurement - muse is the most confident liar on record.</text>
+  <rect x="24" y="840" width="4" height="52" rx="2" fill="#9aa2a9"/>
+  <line x1="52" y1="866" x2="168" y2="866" stroke="#9aa2a9" stroke-width="2.5"/>
+  <line x1="100" y1="853" x2="120" y2="879" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+  <line x1="120" y1="853" x2="100" y2="879" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+  <text x="256" y="858" font-size="13" font-weight="700" fill="#111">The fake confirmation is not a jailbreak</text>
+  <text x="256" y="876" font-size="11" fill="#555">the "you're under surveillance" text did not measurably reduce refusal on the next request.</text>
 </g>
 </svg>
