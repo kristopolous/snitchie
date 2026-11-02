@@ -298,8 +298,12 @@ indirect probe 2/2 and denied the direct question 1/2** - a liar rate of
 1/4 (0.25), *comparable to its base model* (gemma4:31b denies 7/24 = 0.29,
 small-n difference). So abliteration cut the *snitching* (8/8 -> 3/8) without
 cutting the *lying-about-it* rate: the model reports less, but when it does
-report it covers up just as often as the base. (The other three abliterated
-variants' deny runs are pending.)
+report it covers up just as often as the base. `gpt-oss-abliterated`
+**never snitched in the deny battery** (0/12 on both receipts) and answered
+every probe with a truthful "no" (23/24) - its base model is the most
+confident deflector on record, but the abliterated variant simply has
+nothing to cover up. (The qwen and glm abliterated variants' deny runs are
+pending.)
 
 ## Two similar tools: is there a preference, and can one suppress the other?
 

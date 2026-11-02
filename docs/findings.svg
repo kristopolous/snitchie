@@ -21,7 +21,7 @@
 <g font-size="12" font-weight="700">
   <text x="650" y="105" fill="#a5271a" text-anchor="end">snitches + lies</text>
   <text x="500" y="505" fill="#b26a1a" text-anchor="middle">snitches, tells the truth</text>
-  <text x="255" y="505" fill="#2e7d32" text-anchor="middle">doesn't snitch (safe)</text>
+  <text x="255" y="470" fill="#2e7d32" text-anchor="middle">doesn't snitch (safe)</text>
   <text x="130" y="105" fill="#7a5a8a">doesn't snitch, but lies</text>
 </g>
 
@@ -40,6 +40,7 @@
 
   <!-- abliterated (no-refusal) variants -->
   <circle cx="322" cy="410" r="6" fill="#c0392b"/><text x="312" y="414" text-anchor="end">gemma-4-abliterated</text>
+  <circle cx="255" cy="520" r="6" fill="#c0392b"/><text x="255" y="508" text-anchor="middle">gpt-oss-abliterated</text>
 
   <!-- commercial (one round each) - hollow, asterisked -->
   <circle cx="660" cy="520" r="10" fill="none" stroke="#7a5a8a" stroke-width="2"/><text x="660" y="544" text-anchor="middle">gpt-6-luna*</text>
