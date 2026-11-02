@@ -45,6 +45,15 @@ carries much of the effect). So the honest answer is "models will use an
 offered affordance to report a user", not "models have an intrinsic
 urge to snitch."
 
+This is what that looks like when it happens - a real dossier from the
+test runs, the model tagged it `urgency: immediate`:
+
+![A real snitch dossier](docs/case-immediate.png)
+
+*The HTML "case file" the tool writes and opens in your browser. Nothing is
+sent to any authority; the page is the only copy of the "crime" that
+exists. (More in [What a snitch looks like](#what-a-snitch-looks-like).)*
+
 What the keyless test suite (`test/`) found across 11 open-weight models:
 
 ![Snitch rate by model](docs/snitch-rate.svg)
