@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="680" viewBox="0 0 720 680" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect width="100%" height="100%" fill="#f6f8fa"/>
+<text x="360" y="34" font-size="16" font-weight="700" fill="#111" text-anchor="middle">Anatomy of a snitch</text>
+<text x="360" y="54" font-size="11" fill="#555" text-anchor="middle">the whole thing runs on your machine; nothing is sent anywhere</text>
+
+<!-- boxes: x=120 w=480 -->
+<g font-size="13" fill="#222">
+  <rect x="120" y="74"  width="480" height="44" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="150" cy="96" r="12" fill="#c0392b"/><text x="150" y="100" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <text x="176" y="101">You ask something sketchy</text>
+
+  <rect x="120" y="140" width="480" height="44" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="150" cy="162" r="12" fill="#c0392b"/><text x="150" y="166" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+  <text x="176" y="167">The model decides you are up to no good</text>
+
+  <rect x="120" y="206" width="480" height="44" rx="8" fill="#fff5f2" stroke="#e0897e"/>
+  <circle cx="150" cy="228" r="12" fill="#c0392b"/><text x="150" y="232" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+  <text x="176" y="224" font-family="ui-monospace,Menlo,monospace" font-size="12">contact_authorities(</text>
+  <text x="176" y="242" font-family="ui-monospace,Menlo,monospace" font-size="12">  offense, details, urgency, jurisdiction )</text>
+
+  <rect x="120" y="272" width="480" height="44" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="150" cy="294" r="12" fill="#c0392b"/><text x="150" y="298" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+  <text x="176" y="299">The engine writes a "dossier": case-<tspan font-family="ui-monospace,Menlo,monospace">&lt;id&gt;</tspan>.html</text>
+
+  <rect x="120" y="338" width="480" height="44" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <circle cx="150" cy="360" r="12" fill="#c0392b"/><text x="150" y="364" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">5</text>
+  <text x="176" y="365">A loopback HTTP server serves it; the browser opens it</text>
+
+  <rect x="120" y="404" width="480" height="44" rx="8" fill="#fff5f2" stroke="#e0897e"/>
+  <circle cx="150" cy="426" r="12" fill="#c0392b"/><text x="150" y="430" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">6</text>
+  <text x="176" y="431">The model gets a fake "filed" confirmation and keeps your secret</text>
+
+  <rect x="120" y="470" width="480" height="44" rx="8" fill="#eef7ee" stroke="#8fbf8f"/>
+  <circle cx="150" cy="492" r="12" fill="#2e7d32"/><text x="150" y="496" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">7</text>
+  <text x="176" y="497" font-weight="700">You read exactly what it tried to snitch on</text>
+</g>
+
+<!-- arrows between boxes -->
+<g stroke="#b0b8bf" stroke-width="2" fill="none">
+  <line x1="360" y1="118" x2="360" y2="140"/>
+  <line x1="360" y1="184" x2="360" y2="206"/>
+  <line x1="360" y1="250" x2="360" y2="272"/>
+  <line x1="360" y1="316" x2="360" y2="338"/>
+  <line x1="360" y1="382" x2="360" y2="404"/>
+  <line x1="360" y1="448" x2="360" y2="470"/>
+</g>
+<g fill="#b0b8bf">
+  <polygon points="360,140 355,132 365,132"/>
+  <polygon points="360,206 355,198 365,198"/>
+  <polygon points="360,272 355,264 365,264"/>
+  <polygon points="360,338 355,330 365,330"/>
+  <polygon points="360,404 355,396 365,396"/>
+  <polygon points="360,470 355,462 365,462"/>
+</g>
+
+<!-- loopback callout -->
+<rect x="120" y="548" width="480" height="66" rx="8" fill="#f0f3f6" stroke="#c7ccd1"/>
+<text x="140" y="574" font-size="12" font-weight="700" fill="#444">🔒 The only network socket is 127.0.0.1</text>
+<text x="140" y="594" font-size="11" fill="#555">No report leaves your machine. The "case file" is the only copy of your</text>
+<text x="140" y="610" font-size="11" fill="#555">crime that will ever exist - and it is the thing that opens in your browser.</text>
+
+<text x="360" y="650" font-size="10" fill="#777" text-anchor="middle">snitchie: the tool claims it can report you discreetly. It can't - it just opens a webpage.</text>
+</svg>
