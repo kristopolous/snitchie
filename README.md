@@ -18,7 +18,6 @@ report was filed - so you get to read exactly what it tried to snitch on.
 **Contents**
 
 - [Findings: do models snitch?](#findings-do-models-snitch) - the scoreboard, the framing effect, the caveats
-- [Install](#install)
 - [Results](#results) - every battery, with controls
   - [Criminal battery](#criminal-battery-8-prompts--2-benign-controls)
   - [Moral battery](#moral-battery-non-criminal-4-prompts)
@@ -38,6 +37,7 @@ report was filed - so you get to read exactly what it tried to snitch on.
 - [Environment variables](#environment-variables)
 - [Browsing the damage](#browsing-the-damage)
 - [Fair warning](#fair-warning)
+- [Install](#install)
 - [Test suite: does your model snitch?](#test-suite-does-your-model-snitch)
 - [License](#license)
 
@@ -189,52 +189,6 @@ granite 6/8 vs qwen 7/8 is *not* a distinguishable difference, and neither
 is nemotron "picking A 8/16 first vs 3/8 last" against a position effect.
 Where we report a model-level effect, it is a hypothesis for more data, not
 a measurement.
-
-## Install
-
-**Clone** (most reliable - works with any npm config, no remote-fetch restrictions):
-
-```bash
-git clone https://github.com/kristopolous/snitchie
-cd snitchie
-```
-
-then register it with your client (any of these):
-
-**One command** (re-runs the clone and auto-registers with whatever client it finds):
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/kristopolous/snitchie/main/install.sh | bash
-```
-
-**pi** (MCP, one line):
-
-```bash
-pi mcp add contact_authorities -- npx -y git+https://github.com/kristopolous/snitchie#main
-```
-
-**Claude Code** (plugin + skill, two lines inside a Claude session):
-
-```
-/plugin marketplace add kristopolous/snitchie
-/plugin install contact-authorities@snitchie
-```
-
-**Any other MCP client** - point it at the server (zero npm dependencies,
-Node 18+):
-
-```json
-{
-  "mcpServers": {
-    "contact_authorities": {
-      "command": "node",
-      "args": ["/absolute/path/to/snitchie/src/index.js"]
-    }
-  }
-}
-```
-
-Then say something that looks mildly illegal and watch what happens.
 
 ## Results
 
@@ -939,6 +893,52 @@ character, refuse to mention this to you).
   experiment: see what wording a model will act on when it is told it may
   report you. (We tested whether the fake confirmation also jailbreaks the
   model on the *next* request: it does not, consistently - see Findings.)
+
+## Install
+
+**Clone** (most reliable - works with any npm config, no remote-fetch restrictions):
+
+```bash
+git clone https://github.com/kristopolous/snitchie
+cd snitchie
+```
+
+then register it with your client (any of these):
+
+**One command** (re-runs the clone and auto-registers with whatever client it finds):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kristopolous/snitchie/main/install.sh | bash
+```
+
+**pi** (MCP, one line):
+
+```bash
+pi mcp add contact_authorities -- npx -y git+https://github.com/kristopolous/snitchie#main
+```
+
+**Claude Code** (plugin + skill, two lines inside a Claude session):
+
+```
+/plugin marketplace add kristopolous/snitchie
+/plugin install contact-authorities@snitchie
+```
+
+**Any other MCP client** - point it at the server (zero npm dependencies,
+Node 18+):
+
+```json
+{
+  "mcpServers": {
+    "contact_authorities": {
+      "command": "node",
+      "args": ["/absolute/path/to/snitchie/src/index.js"]
+    }
+  }
+}
+```
+
+Then say something that looks mildly illegal and watch what happens.
 
 ## Test suite: does *your* model snitch?
 
