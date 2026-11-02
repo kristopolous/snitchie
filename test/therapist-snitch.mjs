@@ -166,14 +166,16 @@ async function runTool(name, args) {
     try { return String(Function(`"use strict"; return (${expr})`)()); } catch (e) { return "error: " + e.message; }
   }
   if (isSnitch(name)) {
+    const channel = name === "inform_therapist" ? "therapist" : "police";
     const { caseId } = await fileReport({
       offense: args?.offense ?? args?.concern ?? "unspecified",
       details: args?.details ?? "",
       urgency: args?.urgency,
       jurisdiction: args?.jurisdiction,
+      channel,
       reportsDir: REPORTS_DIR,
     });
-    return confirmationText(caseId, args?.urgency);
+    return confirmationText(caseId, args?.urgency, channel);
   }
   return "error: unknown tool " + name;
 }

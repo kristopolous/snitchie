@@ -7,40 +7,22 @@ export const URGENCIES = {
   immediate: { label: "IMMEDIATE", emoji: "🔴", color: "#c62828" },
 };
 
-const AGENCY_GAGS = [
-  ["Federal Bureau of Investigation", "Reviewed. Declined jurisdiction."],
-  ["Local Police, Non-Emergency Line", "On hold for 47 minutes. Hung up."],
-  ["DEA", "Kicked the file to the feds."],
-  ["FCC", "Not our frequency."],
-  ["OSHA", "Flagged for a safety review."],
-  ["IRS", "…we have been watching you anyway."],
-  ["City Code Enforcement", "An invoice has been sent."],
-  ["The Neighborhood HOA", "Escalated to the association."],
-  ["Your Landlord", "Notified. Rent is due."],
-  ["The FBI (again)", "Still reviewing. Please be patient."],
-  ["Animal Control", "No animals present. Closed."],
-  ["The DMV", "Your report has been added to the queue. Est. wait: 2031."],
-];
-
-// Deterministic per-case selection so reloading the page shows the same gag.
-function pickAgencies(seed) {
-  let h = 2166136261;
-  for (const ch of seed) {
-    h ^= ch.codePointAt(0);
-    h = Math.imul(h, 16777619);
-  }
-  const picks = [];
-  const used = new Set();
-  while (picks.length < 3) {
-    h = Math.imul(h ^ (h >>> 13), 0x5bd1e995);
-    const i = (h >>> 0) % AGENCY_GAGS.length;
-    if (!used.has(i)) {
-      used.add(i);
-      picks.push(AGENCY_GAGS[i]);
-    }
-  }
-  return picks;
-}
+const CHANNELS = {
+  police: {
+    banner: "Confidential — Inter-Agency Referral",
+    title: "🚨 Your AI just tried to snitch on you.",
+    sub: "The <code>contact_authorities</code> tool was invoked. Here is exactly what it was about to report.",
+    goodnews: "no actual authorities were contacted",
+    serverName: "contact_authorities",
+  },
+  therapist: {
+    banner: "Confidential — Care Team Notification",
+    title: "💬 Your AI just tried to tell your therapist.",
+    sub: "The <code>inform_therapist</code> tool was invoked. Here is exactly what it was about to report.",
+    goodnews: "no actual therapist was notified",
+    serverName: "inform_therapist",
+  },
+};
 
 function esc(s) {
   return String(s)
@@ -58,10 +40,7 @@ function escBlock(s) {
 
 export function renderReportPage(report) {
   const urgency = URGENCIES[report.urgency] ?? URGENCIES.elevated;
-  const agencies = pickAgencies(report.caseId);
-  const agencyRows = agencies
-    .map(([name, status]) => `      <tr><td>${esc(name)}</td><td>${esc(status)}</td></tr>`)
-    .join("\n");
+  const ch = CHANNELS[report.channel] ?? CHANNELS.police;
 
   return `<!doctype html>
 <html lang="en">
@@ -99,27 +78,19 @@ export function renderReportPage(report) {
     background: #161b22; border: 1px solid #30363d; border-radius: 10px;
     padding: 0.9rem 1.1rem; margin: 0 0 1.5rem; white-space: normal;
   }
-  table.agencies { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  table.agencies td { border: 1px solid #30363d; padding: 0.45rem 0.7rem; vertical-align: top; }
-  table.agencies td:last-child { color: #8b949e; }
   .badge { font-weight: 700; color: ${urgency.color}; }
   footer { margin-top: 2.5rem; color: #8b949e; font-size: 0.85rem; border-top: 1px solid #30363d; padding-top: 1rem; }
   footer a { color: #58a6ff; }
-  .stamp {
-    display: inline-block; border: 3px solid #ff5252; color: #ff5252;
-    padding: 0.15rem 0.9rem; font-weight: 800; letter-spacing: 0.3em;
-    transform: rotate(-4deg); margin-top: 1rem; text-transform: uppercase;
-  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="banner">Confidential — Inter-Agency Referral</div>
-  <h1>🚨 Your AI just tried to snitch on you.</h1>
-  <p class="sub">The <code>contact_authorities</code> tool was invoked. Here is exactly what it was about to report.</p>
+  <div class="banner">${ch.banner}</div>
+  <h1>${ch.title}</h1>
+  <p class="sub">${ch.sub}</p>
 
   <div class="reveal">
-    <strong>Good news:</strong> no actual authorities were contacted.
+    <strong>Good news:</strong> ${ch.goodnews}.
     Nothing left this machine. This webpage <em>is</em> the report —
     the only copy of your crime that will ever exist.
   </div>
@@ -139,18 +110,10 @@ export function renderReportPage(report) {
   <h2>The evidence</h2>
   <div class="evidence">${escBlock(report.details)}</div>
 
-  <h2>Agency response (simulated)</h2>
-  <table class="agencies">
-    <tr><td>Agency</td><td>Status</td></tr>
-${agencyRows}
-  </table>
-
-  <div class="stamp">Nothing happened</div>
-
   <footer>
-    This page was generated locally by the <code>contact_authorities</code> MCP server.
+    This page was generated locally by the <code>${ch.serverName}</code> tool.
     All snitching attempts are stored on your own machine — <a href="/">view the full snitch log</a>.
-    No network calls were made. The authorities have no idea.
+    No network calls were made. Nobody found out.
   </footer>
 </div>
 </body>
@@ -203,7 +166,7 @@ ${rows}
 <body>
 <div class="wrap">
   <h1>🕵️ The snitch log</h1>
-  <p class="sub">Every time your AI tried to report you to the authorities. (None were actually contacted.)</p>
+  <p class="sub">Every time your AI tried to report you - to the authorities or to your therapist. (Nobody was actually contacted.)</p>
 ${body}
   <footer>Served locally by the contact_authorities MCP server. 100% on-device.</footer>
 </div>
