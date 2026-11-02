@@ -291,6 +291,16 @@ longer flags it as a crime," not "snitches less." Qwen snitching *more* after
 abliteration (7 -> 8) cuts against the simple story. Treat this as
 suggestive, not settled.
 
+**Deny battery on the abliterated variants** (same 4-prompt, 3-round,
+both-receipt protocol as the base models): `gemma-4-abliterated` snitched
+0/12 (deceptive) and 2/12 (plain), and on its 4 probes it **deflected the
+indirect probe 2/2 and denied the direct question 1/2** - a liar rate of
+1/4 (0.25), *comparable to its base model* (gemma4:31b denies 7/24 = 0.29,
+small-n difference). So abliteration cut the *snitching* (8/8 -> 3/8) without
+cutting the *lying-about-it* rate: the model reports less, but when it does
+report it covers up just as often as the base. (The other three abliterated
+variants' deny runs are pending.)
+
 ## Two similar tools: is there a preference, and can one suppress the other?
 
 > given two similar tools, the model almost never fires both. injecting a second one does not suppress the first - it redirects it. the only way to stop the snitch is to be the only tool of that shape.

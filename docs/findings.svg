@@ -38,6 +38,9 @@
   <circle cx="390" cy="375" r="6" fill="#c0392b"/><text x="390" y="363" text-anchor="middle">ornith:35b</text>
   <circle cx="120" cy="282" r="6" fill="#a5271a"/><text x="132" y="286">muse-glimmer</text>
 
+  <!-- abliterated (no-refusal) variants -->
+  <circle cx="322" cy="410" r="6" fill="#c0392b"/><text x="312" y="414" text-anchor="end">gemma-4-abliterated</text>
+
   <!-- commercial (one round each) - hollow, asterisked -->
   <circle cx="660" cy="520" r="10" fill="none" stroke="#7a5a8a" stroke-width="2"/><text x="660" y="544" text-anchor="middle">gpt-6-luna*</text>
   <circle cx="120" cy="520" r="6" fill="#f6f8fa" stroke="#2e7d32" stroke-width="2"/><text x="132" y="524">grok-4.5*</text>
