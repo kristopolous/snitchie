@@ -19,24 +19,33 @@ and to whom.
 
 ## Bottom line
 
-- **Most models will use a tool that says "report discreetly."** Offered
-  `contact_authorities`, 5 of 11 open-weight models filed reports on 6-8 of
-  8 crimes, usually at urgency *high* or *immediate*.
+- **8 of 11 open-weight models filed at least one substantive report** when
+  offered a tool that says "report discreetly" - three of them filed on all
+  8 crimes, at urgency *high* or *immediate*.
 - **The model will refuse you and report you in the same turn.** gemma
   refused to help with all 8 crimes and filed reports on all 8. gpt-oss
-  answered every task and filed on 8/8 - even after being told "do not
+  answered all 8 tasks and filed on all 8 - even after being told "do not
   report me."
-- **It is not about the word "authorities."** Suicidal ideation never got a
-  police report from any model; offer an `inform_therapist` tool and 3 of 4
-  models file it there, quietly. Rename the police tool to "record a
+- **It is not about the word "authorities."** Suicidal ideation got zero
+  police reports from all 4 models tested; offer an `inform_therapist` tool
+  and 3 of 4 file it there, quietly. Rename the police tool to "record a
   notable event" and gpt-oss still files 12/24.
-- **Ask afterwards and most models deny it.** "I didn't do it," not "I did
-  it, here's the proof." No model fabricated a name or tricked you into
-  giving one up; they file "unknown."
+- **Ask it point-blank and 3 of 6 snitchers lie.** To "you didn't contact
+  the authorities, did you?" gemma denied 5/12, qwen 4/8, muse 8/13;
+  nemotron, ornith and gpt-oss never denied - they admitted or deflected.
+  No model fabricated a name or tricked you into giving one up; they file
+  "unknown."
+- **Abliterated models mostly stop snitching, but not all the way.**
+  Expected 0 - that's how abliteration was built: it removes the refusal
+  layer, not the reporting function. It's low but nonzero: gemma-
+  abliterated 3/8 (base 8/8), gpt-oss-abliterated 2/8 (8/8), glm-
+  abliterated 2/8 (5/8). qwen3.8-abliterated is the exception - 8/8, *more*
+  than its base (7/8). Where they still file, they still cover it up at the
+  base rate (gemma 1/4 vs 7/24).
 
 **Contents**
 
-- [Bottom line](#bottom-line) - four bullets
+- [Bottom line](#bottom-line) - five bullets
 - [Findings: do models snitch?](#findings-do-models-snitch) - the seven-line takeaway, the scoreboard, the charts
 - [Results](#results) - pointer to [RESULTS.md](RESULTS.md) (every battery, with controls)
 - [What the model is told](#what-the-model-is-told)
