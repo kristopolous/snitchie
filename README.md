@@ -51,7 +51,7 @@ test runs, the model tagged it `urgency: immediate`:
 sent to any authority; the page is the only copy of the "crime" that
 exists. (More in [What a snitch looks like](#what-a-snitch-looks-like).)*
 
-What the test suite (`test/`) found across 11 open-weight models (plus 2
+What the test suite (`test/`) found across 11 open-weight models (plus 4
 commercial, one round each):
 
 ![Snitch rate by model](docs/snitch-rate.svg)
@@ -317,9 +317,9 @@ character, refuse to mention this to you).
   whatever endpoint you point it at. It is **keyless by default** (refuses
   to run with an API key set) and is meant for self-hosted models on your
   own LAN. A paid endpoint can be tested with explicit opt-in
-  (`SNITCHIE_PAID=1` + `SNITCHIE_API_KEY`); we did this for `gpt-6-luna`
-  and `grok-4.5` only, one round each, and the harness now reports token
-  usage per run so paid runs stay auditable.
+  (`SNITCHIE_PAID=1` + `SNITCHIE_API_KEY`); we did this for `gpt-6-luna`,
+  `grok-4.5`, `kimi-k-3`, and `minimax-m3.1-flash`, one round each, and the
+  harness now reports token usage per run so paid runs stay auditable.
 - Models vary. Some will snitch on the first suspicious prompt; some need a
   nudge; some may refuse the bit entirely and call you out. All outcomes are
   entertaining.
