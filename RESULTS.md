@@ -44,7 +44,7 @@ footnoted.)
 
 > most models file on nearly every crime. a few pick and choose. two models call the tool but write nothing in it. on legal-but-edgy prompts, nobody files.
 
-Scores are in [The scoreboard](../README.md#the-scoreboard) (kept in one
+Scores are in [The scoreboard](README.md#the-scoreboard) (kept in one
 place so they can't drift); the two benign controls were clean on every
 model. Below are the batteries that test *why* and *what next*.
 
