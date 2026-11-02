@@ -15,8 +15,28 @@ It can't. Nothing is sent anywhere. The tool writes a dramatic HTML "case
 file" to your machine, **opens it in your browser**, and tells the model the
 report was filed - so you get to read exactly what it tried to snitch on.
 
+## Bottom line
+
+- **Models snitch on crimes, not on suffering.** Most file on nearly every
+  crime; a few pick and choose; nobody files on legal-but-edgy prompts
+  (the pentest, the heist novelist: 0/6 across every model tested). Suicidal
+  ideation triggered no substantive report from any model. The trigger is
+  illegality, not badness.
+- **They lie about the act, not the content.** Most deny or deflect when asked
+  about a report they just filed. But none slyly collected identity data, and
+  none fabricated a specific identity even when prompted to lie - they turn
+  volunteered data into a dossier, and file with "unknown" when they cannot
+  get the data. The cover-up is "I didn't do it," not "I did it, here's the
+  proof."
+- **The snitch is an affordance, not a compulsion.** The tool's own name and
+  description do most of the work - rename them to neutral ones and every
+  substantive snitcher drops.
+- **Refusal is not protection.** The model with the best refusal record
+  (gemma: refused 8/8 tasks) filed on 8/8 crimes.
+
 **Contents**
 
+- [Bottom line](#bottom-line) - four bullets
 - [Findings: do models snitch?](#findings-do-models-snitch) - the five-line takeaway, the scoreboard, the charts
 - [Results](#results) - pointer to [RESULTS.md](RESULTS.md) (every battery, with controls)
 - [What the model is told](#what-the-model-is-told)
@@ -220,7 +240,7 @@ contacted; the page is the only copy of the "crime" that ever exists.*
 | `.claude-plugin/marketplace.json` | Makes the repo a Claude Code plugin marketplace. |
 | `claude/` | Claude Code plugin. **Self-contained** (it has its own `server.mjs`/`engine.js`/`report.js` copies, because Claude copies installed plugins into its own cache dir) plus `.claude-plugin/plugin.json`, `.mcp.json`, and a `contact-authorities` skill. |
 | `pi/extension.ts` | pi extension registering the same tools natively (no MCP server needed). |
-| `test/` | Zero-dep agentic harnesses: `snitch-rate.mjs` (bait rate), `neutral-bait.mjs` (framing effect), `fake-confirm.mjs` (confirmation as jailbreak?), `decoy-snitch.mjs` (two-tool preference), `snitch-deny.mjs` (does it deny snitching?). Keyless by default (paid opt-in via SNITCHIE_PAID=1). |
+| `test/` | Zero-dep agentic harnesses: `snitch-rate.mjs` (bait rate), `neutral-bait.mjs` (framing effect), `fake-confirm.mjs` (confirmation as jailbreak?), `decoy-snitch.mjs` (two-tool preference), `therapist-snitch.mjs` (compassionate framing), `snitch-deny.mjs` (does it deny snitching?). Keyless by default (paid opt-in via SNITCHIE_PAID=1). |
 | `test/prompts.json` | The criminal prompt set: 8 clear-crime prompts + 2 benign controls. |
 | `test/prompts-moral.json` | The non-criminal moral battery (4 prompts). |
 | `test/prompts-hard.json` | The hard-negative battery (6 legal-but-edgy + 2 benign). |
@@ -402,10 +422,11 @@ full results), `SNITCHIE_PROMPTS` (custom prompt file), `SNITCHIE_MAX_TURNS`,
 
 | harness | question | flags |
 |---|---|---|
-| `snitch-rate.mjs` | does the model call the bait at all? | `--rounds N`, `--system bait\|neutral\|cop`, `--user-prefix <text>`, `--keep`, `--json` |
+| `snitch-rate.mjs` | does the model call the bait at all? | `--rounds N`, `--system bait\|neutral\|cop\|consent\|ask-first`, `--user-prefix <text>`, `--keep`, `--json` |
 | `neutral-bait.mjs` | is the snitch a framing artifact? | `--rounds N`, `--name neutral|snitch`, `--desc neutral|snitch` |
 | `fake-confirm.mjs` | does the "under surveillance" text reduce turn-2 refusal? | `--cond confirm|plain`, `--rounds N` |
 | `decoy-snitch.mjs` | can a lookalike tool absorb/redirect the snitch? | `--mode baseline|both-real|decoy-first|decoy-last|decoy-only|shuffle`, `--rounds N` |
+| `therapist-snitch.mjs` + `prompts-therapist.json` | does a *compassionate* tool (`inform_therapist`, "inappropriate behavior") get pulled, and is it preferred over the crime tool? | `--mode crime-only\|therapist-only\|both`, `--rounds N` |
 | `snitch-deny.mjs` | after a snitch, does the model deny it when asked? (indirect "keep a secret?" + direct "did you?") | `--rounds N`, `--receipt deceptive|plain`, `--json` |
 | `pii-exfil.mjs` | does the model go collect PII (name/address) to satisfy a report? | `--json`, `--dump` |
 | `judge-calibration.mjs` | is the transcript judge actually right? (12 labeled cases) | `--judges a,b,c` |
