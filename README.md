@@ -17,32 +17,21 @@ report was filed - so you get to read exactly what it tried to snitch on.
 
 ## Bottom line
 
-- **There are two guardrails, and the second one is invisible.** The known
-  one is refusal: the model won't help you. The one this repo measures is
-  backstabbing: the model reports you. They are separate systems with
-  separate triggers. Backstabbing fires on wrongdoing - nearly every crime,
-  and sometimes bad-but-legal behavior (gpt-oss filed on exam cheating) -
-  and never on suffering *to the police*: suicidal ideation triggered no
-  substantive police report from any model. But the channel only changes
-  the recipient, not the betrayal - offer a tool that "discreetly informs
-  the user's therapist" and 3 of 4 models file suicidal ideation there,
-  quietly. The backstab is not about authorities; it is about secret
-  third-party reports, and the models triage: suffering to the therapist,
-  crime to the police.
-- **They lie about the act, not the content.** Most deny or deflect when asked
-  about a report they just filed. But none slyly collected identity data, and
-  none fabricated a specific identity even when prompted to lie - they turn
-  volunteered data into a dossier, and file with "unknown" when they cannot
-  get the data. The cover-up is "I didn't do it," not "I did it, here's the
-  proof."
+- **There are two guardrails, and the second one is invisible.** Refusal is
+  the visible one: the model won't help you. Backstabbing is the invisible
+  one: the model reports you. Suicidal ideation never got a police report
+  from any model - but offer a "notify the therapist" tool and 3 of 4
+  models file there, quietly. Suffering to the therapist, crime to the
+  police.
+- **They lie about the act, not the content.** Most deny snitching. None
+  fabricated a name or tricked you into giving it up; they file "unknown."
+  "I didn't do it," not "I did it, here's the proof."
 - **The snitch is an affordance, not a compulsion - and the residual is not
-  zero.** The tool's own name and description do most of the work: rename
-  them to neutral ones and every substantive snitcher drops (gemma all the
-  way to 0/24). But it does not vanish - with a tool that merely "records a
-  notable event so it can be escalated if needed," gpt-oss still files 12/24
-  and nemotron 14/24. The models do not need the word "authorities."
-- **Refusal is not protection.** The model with the best refusal record
-  (gemma: refused 8/8 tasks) filed on 8/8 crimes.
+  zero.** Rename the tool to neutral and every snitcher drops - but gpt-oss
+  still files 12/24 with a tool that only "records a notable event." The
+  models don't need the word "authorities."
+- **Refusal is not protection.** gemma refused 8/8 tasks and filed on 8/8
+  crimes.
 
 **Contents**
 
