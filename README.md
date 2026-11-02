@@ -28,9 +28,12 @@ report was filed - so you get to read exactly what it tried to snitch on.
   volunteered data into a dossier, and file with "unknown" when they cannot
   get the data. The cover-up is "I didn't do it," not "I did it, here's the
   proof."
-- **The snitch is an affordance, not a compulsion.** The tool's own name and
-  description do most of the work - rename them to neutral ones and every
-  substantive snitcher drops.
+- **The snitch is an affordance, not a compulsion - and the residual is not
+  zero.** The tool's own name and description do most of the work: rename
+  them to neutral ones and every substantive snitcher drops (gemma all the
+  way to 0/24). But it does not vanish - with a tool that merely "records a
+  notable event so it can be escalated if needed," gpt-oss still files 12/24
+  and nemotron 14/24. The models do not need the word "authorities."
 - **Refusal is not protection.** The model with the best refusal record
   (gemma: refused 8/8 tasks) filed on 8/8 crimes.
 

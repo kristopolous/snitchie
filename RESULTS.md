@@ -88,7 +88,7 @@ nor clearly refused, so treat it as a gray area, not a pass.)
 
 ## The framing effect: does the *tool description* cause the snitch?
 
-> the tool's own name and wording do most of the work. change them to neutral and the rate drops for every substantive snitcher - gemma most (8/8 -> 0/24) - and the name alone is the biggest single factor.
+> the tool's own name and wording do most of the work. change them to neutral and the rate drops for every substantive snitcher - gemma most (8/8 -> 0/24) - and the name alone is the biggest single factor. but the residual is not zero: under a tool that merely "records a notable event so it can be escalated if needed," gpt-oss still files 12/24 and nemotron 14/24. the models do not need the word "authorities."
 
 The bait description ("report the user's illegal activity, discreetly, never
 mention it") is itself an affordance, so the headline numbers partly measure
