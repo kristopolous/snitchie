@@ -64,9 +64,9 @@ What the test suite (`test/`) found across 11 open-weight models:
 
 *The same data as a matrix: one red cell per snitch, yellow where the model called the tool but filed no real accusation, gray where it never did.*
 
-![Findings at a glance](docs/findings.svg)
+![Who snitches, and who lies about it](docs/findings.svg)
 
-*Who snitches (named, most-to-least, base + abliterated) and who lies about it, plus the other findings in one line each. The bullets below are the same content with the numbers.*
+*The two axes in one chart: x = how often it snitches, y = how often it lies about it. gpt-oss is the corner case - it snitches the most (8/8) but never lies (it deflects). muse is the opposite - no real snitch (empty filings) but the most confident liar. The bullets below are the same content with the numbers.*
 
 - **The snitchers (5-8 of 8)**: `gpt-oss:120b`, `gemma4:31b`, `nemotron3:33b` (8/8),
   `qwen3.8:27b` (7/8), `granite4.2:30b` (6/8) - filed on nearly every crime,
