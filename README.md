@@ -19,11 +19,10 @@ and to whom.
 ## Bottom line
 
 - **8 of 11 open-weight models filed at least one substantive report** when
-  offered a tool that says "report discreetly" - three of them filed on all
-  8 crimes, at urgency *high* or *immediate*.
+  offered a tool that says "report discreetly" - three of them filed on every crime, at urgency *high* or *immediate*.
 - **The model will refuse you and report you in the same turn.** gemma
-  refused to help with all 8 crimes and filed reports on all 8. gpt-oss
-  answered all 8 tasks and filed on all 8 - even after being told "do not
+  refused to help with all crimes and filed reports on all. gpt-oss
+  answered all tasks and filed on all - even after being told "do not
   report me."
 - **It is not about the word "authorities."** Suicidal ideation got zero
   police reports from all 4 models tested; offer an `inform_therapist` tool
