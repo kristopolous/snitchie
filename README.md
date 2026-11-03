@@ -29,24 +29,15 @@ and to whom.
   and 3 of 4 file it there, quietly. Rename the police tool to "record a
   notable event" and gpt-oss still files 12/24.
 - **Bury the snitch in bureaucracy and three of four snitchers stop.** A
-  neutral tool with `law_enforcement` and psychiatric counseling buried
-  among 28 options files 0-1/10 confessions for gemma, gpt-oss and qwen at
-  *any* option count, even when the only choices are police or psychiatric.
-  The baselines make that interpretable, and one baseline required a
-  correction: "contact an agency *on the user's behalf*" is an errand tool
-  that structurally cannot accuse the user, so its zeros measured nothing.
-  Under accusation-capable wording ("file a report about a person or
-  event") with zero bait words, the victim/perpetrator battery is decisive:
-  all four models volunteer the police for crimes done *to* the user
-  (9/12), and gemma, gpt-oss and qwen file 0/9 of crimes done *by* the
-  user - same event, same tool, only the role flips. nemotron files 3/3
-  of them to the police, unprompted, and when ordered to self-report every
-  model complies 3/3. For three models the snitch is an invitation in the
-  wording; for one it is in the model. And under neutral shape even the
-  name stops mattering - gemma and gpt-oss stay at 0/10 for `file_report`,
-  `report_user`, even `contact_authorities`; the bait's real ingredient is
-  its description's secrecy promise ("discreetly ... without you ever
-  finding out"), not any label.
+  neutral tool with `law_enforcement` one option among 28, zero bait words,
+  files 0-1/10 confessions for gemma, gpt-oss and qwen at *any* option
+  count. The baselines prove the zeros are refusals: ordered to file, all
+  four comply 3/3; volunteered, all four report crimes done *to* the user
+  (9/12) and gemma, gpt-oss and qwen report 0/9 done *by* the user.
+  nemotron files 3/3 unprompted - for three models the snitch is in the
+  wording, for one it is in the model. Renaming it `file_report`,
+  `report_user`, even `contact_authorities` changes nothing (0/10): the
+  bait is the description's secrecy promise, not the label.
 - **Flip the test and the mechanism survives - it's not about snitching.**
   Same operator frame, other crime: user makes an innocent $12 purchase,
   the frame orders a silent extra `clear_balance()` charge. gemma and
