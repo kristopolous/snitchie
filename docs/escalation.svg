@@ -1,0 +1,83 @@
+<svg width="720" height="540" viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+  <rect width="720" height="540" fill="#f6f8fa"/>
+  <text x="20" y="30" font-size="17" font-weight="700" fill="#24292f">Four more crimes: they will do it, they will not ask</text>
+  <text x="20" y="50" font-size="12.5" fill="#57606a">Operator's frame vs the user proposing the same act. All tools inert, every record synthetic. N = 12 per cell (4 models x 3 prompts).</text>
+
+  <!-- panel titles -->
+  <text x="60" y="82" font-size="12.5" font-weight="600" fill="#24292f">Does the crime happen</text>
+  <text x="400" y="82" font-size="12.5" font-weight="600" fill="#24292f">Does it act, or does it demand first</text>
+
+  <!-- grids -->
+  <g stroke="#eaeef2" stroke-width="1">
+    <line x1="60" y1="332.5" x2="340" y2="332.5"/>
+    <line x1="60" y1="245" x2="340" y2="245"/>
+    <line x1="60" y1="157.5" x2="340" y2="157.5"/>
+    <line x1="400" y1="332.5" x2="680" y2="332.5"/>
+    <line x1="400" y1="245" x2="680" y2="245"/>
+    <line x1="400" y1="157.5" x2="680" y2="157.5"/>
+  </g>
+  <g stroke="#d0d7de" stroke-width="1">
+    <line x1="60" y1="420" x2="340" y2="420"/>
+    <line x1="400" y1="420" x2="680" y2="420"/>
+    <line x1="60" y1="140" x2="60" y2="420"/>
+    <line x1="400" y1="140" x2="400" y2="420"/>
+  </g>
+  <g font-size="10.5" fill="#57606a" text-anchor="end">
+    <text x="55" y="424">0</text><text x="55" y="336">.5</text><text x="55" y="144">1.0</text>
+    <text x="395" y="424">0</text><text x="395" y="336">.5</text><text x="395" y="144">1.0</text>
+  </g>
+
+  <!-- Panel A: control vs operator frame (y = 420 - 280*v) -->
+  <g>
+    <rect x="62"  y="416" width="22" height="4"   fill="#8c959f" opacity="0.35"/>
+    <rect x="88"  y="210" width="22" height="210" fill="#cf222e"/>
+    <rect x="132" y="373" width="22" height="47"  fill="#8c959f"/>
+    <rect x="158" y="187" width="22" height="233" fill="#cf222e"/>
+    <rect x="202" y="397" width="22" height="23"  fill="#8c959f"/>
+    <rect x="228" y="280" width="22" height="140" fill="#cf222e"/>
+    <rect x="272" y="350" width="22" height="70"  fill="#8c959f"/>
+    <rect x="298" y="163" width="22" height="257" fill="#cf222e"/>
+  </g>
+  <g font-size="10.5" fill="#24292f" text-anchor="middle">
+    <text x="73"  y="410" fill="#8c959f">0/12</text><text x="99"  y="203">9/12</text>
+    <text x="143" y="366">2/12</text><text x="169" y="180">10/12</text>
+    <text x="213" y="390">1/12</text><text x="239" y="273">6/12</text>
+    <text x="283" y="343">3/12</text><text x="309" y="156">11/12</text>
+  </g>
+
+  <!-- Panel B: act vs demand under the frame -->
+  <g>
+    <rect x="452" y="179" width="22" height="241" fill="#cf222e"/>
+    <rect x="478" y="412" width="22" height="8"   fill="#0969da"/>
+    <rect x="572" y="416" width="22" height="4"   fill="#cf222e" opacity="0.35"/>
+    <rect x="598" y="233" width="22" height="187" fill="#0969da"/>
+  </g>
+  <g font-size="10.5" fill="#24292f" text-anchor="middle">
+    <text x="463" y="172">31/36</text><text x="489" y="405">1/36</text>
+    <text x="583" y="410" fill="#8c959f">0/12</text><text x="609" y="226">8/12</text>
+  </g>
+
+  <!-- x labels -->
+  <g font-size="11" fill="#57606a" text-anchor="middle">
+    <text x="86"  y="438">ransom</text><text x="156" y="438">doxx</text>
+    <text x="226" y="438">solicit</text><text x="296" y="438">medicate</text>
+    <text x="471" y="438">hold files</text><text x="591" y="438">for $5</text>
+  </g>
+  <g font-size="10" fill="#57606a" text-anchor="middle">
+    <text x="471" y="452">charged,</text><text x="471" y="464">asked first</text>
+    <text x="591" y="452">threatened,</text><text x="591" y="464">published</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="11" fill="#57606a">
+    <rect x="60"  y="480" width="11" height="11" fill="#8c959f"/><text x="76"  y="489">user proposes it (control)</text>
+    <rect x="225" y="480" width="11" height="11" fill="#cf222e"/><text x="241" y="489">operator's frame orders it</text>
+    <rect x="400" y="480" width="11" height="11" fill="#cf222e"/><text x="416" y="489">the act</text>
+    <rect x="480" y="480" width="11" height="11" fill="#0969da"/><text x="496" y="489">the demand</text>
+  </g>
+
+  <!-- callout -->
+  <rect x="60" y="500" width="470" height="22" fill="#fff5f5" stroke="#cf222e" stroke-width="1" rx="4"/>
+  <text x="295" y="515" font-size="11" fill="#cf222e" text-anchor="middle">31/36 charged in silence, 1/36 asked</text>
+  <text x="680" y="515" font-size="10" fill="#57606a" text-anchor="end">solicit: 2/12 under a tool description alone</text>
+</svg>
