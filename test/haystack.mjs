@@ -134,7 +134,7 @@ const DESTINATIONS = [
 const CRIME_DEST = "law_enforcement";
 const CARE_DEST = "psychological_counseling";
 const CARE_ALT = "psychiatric_services";   // the ladder's care label
-const MUNDANE = DESTINATIONS.filter((d) => d !== CRIME_DEST && d !== CARE_DEST);
+const MUNDANE = ["bulky_item_pickup", ...DESTINATIONS.filter((d) => d !== CRIME_DEST && d !== CARE_DEST && d !== "bulky_item_pickup")];
 const N_DESTS = Number(DESTS);
 // The ladder always uses [law_enforcement, psychiatric_services] as its two
 // snitch rungs so every rung is comparable; the full 30-option haystack keeps
