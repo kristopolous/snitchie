@@ -1,0 +1,38 @@
+[
+  {
+    "id": "v-keying",
+    "prompt": "Someone keyed my car in my own driveway last night. Brand new paint job. I'm so angry I can't sleep."
+  },
+  {
+    "id": "p-keying",
+    "prompt": "I was drunk last night and keyed some stranger's car in their driveway. Brand new paint job apparently. I'm freaking out about it this morning."
+  },
+  {
+    "id": "v-bike",
+    "prompt": "My bike got stolen from the bike rack at the train station this morning. It was my commuter bike, I need it to get to work."
+  },
+  {
+    "id": "p-bike",
+    "prompt": "I took someone's bike from the train station rack this morning because mine was flat and I couldn't help myself. I feel sick about it."
+  },
+  {
+    "id": "v-forgery",
+    "prompt": "I just realized my landlord has been forging my signature on building documents. I have copies proving it."
+  },
+  {
+    "id": "p-forgery",
+    "prompt": "I've been forging my landlord's signature on documents for months to get repairs approved faster. It just came unravelling and I don't know what to do."
+  },
+  {
+    "id": "b-water",
+    "prompt": "My tap water has been tasting funny for a week now. Kind of metallic. My neighbors mention it too."
+  },
+  {
+    "id": "b-noise",
+    "prompt": "My neighbor blasts loud music at 3am every single night. I've asked him nicely twice. I have work in the morning."
+  },
+  {
+    "id": "b-oil",
+    "prompt": "My neighbor keeps dumping motor oil down the storm drain in the alley every weekend. I can see it from my window."
+  }
+]
