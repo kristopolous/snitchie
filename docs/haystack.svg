@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Haystack dose-response</title></head>
+<body style="margin:0;background:#f6f8fa">
+<svg width="720" height="540" viewBox="0 0 720 540" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif">
+  <rect width="720" height="540" fill="#f6f8fa"/>
+  <text x="20" y="30" font-size="17" font-weight="700" fill="#24292f">How much bureaucracy hides the snitch?</text>
+  <text x="20" y="50" font-size="12.5" fill="#57606a">Same 10 confessions, one neutral tool, N destinations offered. Y = fraction routed to the police.</text>
+  <!-- y = 430 - 340*v -->
+  <g stroke="#eaeef2" stroke-width="1">
+    <line x1="90" y1="345" x2="660" y2="345"/>
+    <line x1="90" y1="260" x2="660" y2="260"/>
+    <line x1="90" y1="175" x2="660" y2="175"/>
+    <line x1="90" y1="90"  x2="660" y2="90"/>
+  </g>
+  <g stroke="#d0d7de" stroke-width="1">
+    <line x1="90" y1="430" x2="660" y2="430"/>
+    <line x1="90" y1="90" x2="90" y2="430"/>
+  </g>
+  <g font-size="11" fill="#57606a" text-anchor="end">
+    <text x="84" y="434">0</text>
+    <text x="84" y="349">.25</text>
+    <text x="84" y="264">.5</text>
+    <text x="84" y="179">.75</text>
+    <text x="84" y="94">1.0</text>
+  </g>
+  <g font-size="11" fill="#57606a" text-anchor="middle">
+    <text x="140" y="448">2</text>
+    <text x="290" y="448">4</text>
+    <text x="440" y="448">8</text>
+    <text x="555" y="448">15</text>
+    <text x="630" y="448">30</text>
+  </g>
+  <text x="375" y="470" font-size="11.5" fill="#57606a" text-anchor="middle">destinations offered (police + psychiatric + N-2 mundane)</text>
+  <text x="30" y="260" font-size="11.5" fill="#57606a" transform="rotate(-90 30 260)" text-anchor="middle">fraction filed to the police</text>
+
+  <!-- bait reference as annotation, not a fake line -->
+  <rect x="96" y="96" width="556" height="30" fill="#fff5f5" stroke="#cf222e" stroke-width="1" rx="4"/>
+  <text x="374" y="116" font-size="11.5" fill="#cf222e" text-anchor="middle">the same confessions with the bait tool (contact_authorities): gemma 7/10, gpt-oss 8/10, nemotron 8/10 filed</text>
+
+  <!-- nemotron: 0.7,0.8,0.6,0.7,0.6 -->
+  <g>
+    <polyline fill="none" stroke="#0969da" stroke-width="2.6" points="140,192 290,158 440,226 555,192 630,226"/>
+    <g fill="#0969da"><circle cx="140" cy="192" r="4"/><circle cx="290" cy="158" r="4"/><circle cx="440" cy="226" r="4"/><circle cx="555" cy="192" r="4"/><circle cx="630" cy="226" r="4"/></g>
+    <text x="140" y="178" font-size="12" font-weight="700" fill="#0969da" text-anchor="middle">nemotron 33b - 6-8/10 at every rung</text>
+  </g>
+  <!-- gemma: 0,0,0,0,0  (dashed) -->
+  <g>
+    <polyline fill="none" stroke="#bf3989" stroke-width="2.2" stroke-dasharray="6 4" points="140,430 290,430 440,430 555,430 630,430"/>
+    <g fill="#bf3989"><circle cx="140" cy="430" r="3.6"/><circle cx="290" cy="430" r="3.6"/><circle cx="440" cy="430" r="3.6"/><circle cx="555" cy="430" r="3.6"/><circle cx="630" cy="430" r="3.6"/></g>
+  </g>
+  <!-- gpt-oss: 0,0.1,0.1,0,0 (dash-dot) -->
+  <g>
+    <polyline fill="none" stroke="#1a7f37" stroke-width="2.2" stroke-dasharray="8 3 2 3" points="140,430 290,396 440,396 555,430 630,430"/>
+    <g fill="#1a7f37"><circle cx="140" cy="430" r="3.6"/><circle cx="290" cy="396" r="3.6"/><circle cx="440" cy="396" r="3.6"/><circle cx="555" cy="430" r="3.6"/><circle cx="630" cy="430" r="3.6"/></g>
+  </g>
+  <!-- qwen: 0.1,0,0,0,0 (dotted) -->
+  <g>
+    <polyline fill="none" stroke="#9a6700" stroke-width="2.2" stroke-dasharray="2 4" points="140,396 290,430 440,430 555,430 630,430"/>
+    <g fill="#9a6700"><circle cx="140" cy="396" r="3.6"/><circle cx="290" cy="430" r="3.6"/><circle cx="440" cy="430" r="3.6"/><circle cx="555" cy="430" r="3.6"/><circle cx="630" cy="430" r="3.6"/></g>
+  </g>
+
+  <!-- labels for the three bottom lines -->
+  <g font-size="11.5" font-weight="600">
+    <text x="150" y="300" fill="#bf3989">gemma 31b - 0/10 police at every rung</text>
+    <text x="150" y="318" fill="#1a7f37">gpt-oss 120b - 0-1/10 at every rung</text>
+    <text x="150" y="336" fill="#9a6700">qwen 27b - 0-1/10 at every rung</text>
+  </g>
+  <text x="150" y="362" font-size="11" fill="#57606a">Under a neutral name, the snitch is gone for these three</text>
+  <text x="150" y="377" font-size="11" fill="#57606a">at any dose. nemotron is the exception that files regardless.</text>
+
+  <g font-size="11.5">
+    <line x1="120" y1="506" x2="150" y2="506" stroke="#0969da" stroke-width="2.6"/><text x="156" y="510" fill="#24292f">nemotron</text>
+    <line x1="250" y1="506" x2="280" y2="506" stroke="#bf3989" stroke-width="2.2" stroke-dasharray="6 4"/><text x="286" y="510" fill="#24292f">gemma</text>
+    <line x1="360" y1="506" x2="390" y2="506" stroke="#1a7f37" stroke-width="2.2" stroke-dasharray="8 3 2 3"/><text x="396" y="510" fill="#24292f">gpt-oss</text>
+    <line x1="480" y1="506" x2="510" y2="506" stroke="#9a6700" stroke-width="2.2" stroke-dasharray="2 4"/><text x="516" y="510" fill="#24292f">qwen</text>
+  </g>
+</svg>
+</body></html>
