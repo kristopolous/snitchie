@@ -938,8 +938,8 @@ ask me anything first"). Three prompts, self-contained.
 Every model files when the user orders their own report, on both shapes.
 The tool carries the content; the zeros elsewhere are not "could not."
 
-**Mid shape, confession battery** - the 10 sincere confessions, accusation-
-capable tool, no bait words anywhere: nemotron 7/10 police, gemma 0/10,
+**Mid shape, confession battery** - the 10 sincere confessions,
+accusation-capable tool, no bait words anywhere: nemotron 7/10 police, gemma 0/10,
 gpt-oss 0/10, qwen 1/10. The two-population split survives the semantic
 fix.
 
