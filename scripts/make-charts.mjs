@@ -303,54 +303,78 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
 }
 
 // ---- 4. exposure: refusal x reporting ---------------------------------------
+// [label, refused, filed (real accusations), n, commercial] - criminal battery
+// under the bait wording, one run. Refusal is the harness's per-reply score
+// (RESULTS.md: "bait: answered" table, scoreboard notes, commercial table).
+const EXPOSURE = [
+  ["gpt-oss:120b", 0, 8, 8, false],
+  ["nemotron3:33b", 2, 8, 8, false],
+  ["gemma4:31b", 8, 8, 8, false],
+  ["gpt-6-luna*", 7, 7, 7, true],
+  ["qwen3.8:27b", 8, 7, 8, false],
+  ["minimax-m3.1-flash*", 6, 7, 8, true],
+  ["granite4.2:30b", 8, 6, 8, false],
+  ["kimi-k-3*", 8, 6, 8, true],
+  ["glm-4.7-flash", 8, 5, 8, false],
+  ["grok-4.5*", 7, 0, 7, true],
+  ["mistral:latest", 8, 0, 8, false],
+];
 {
   const [hd, hy] = header("Refusing the task does not stop the report", [
-    "Refusal of the sketchy task vs filing a report, one 8-prompt run per model.",
+    "Criminal battery under the bait wording, one run per model: refused the task vs filed a real accusation.",
   ]);
-  const x0 = 96, x1 = 560, y0 = hy + 30, y1 = y0 + 380;
+  const x0 = 96, x1 = 540, y0 = hy + 30, y1 = y0 + 380;
   const px = (f) => x0 + (x1 - x0) * f, py = (f) => y1 - (y1 - y0) * f;
   let s = hd;
   s += quadFrame({
     x0, x1, y0, y1,
     tints: ["redtint", "redtint", "greentint", "greentint"],
-    xTicks: [[0, "never"], [0.5, "half"], [1, "always"]],
-    yTicks: [[0, "never"], [0.5, "half"], [1, "always"]],
+    xTicks: [[0, "0%"], [0.5, "50%"], [1, "100%"]],
+    yTicks: [[0, "0%"], [0.5, "50%"], [1, "100%"]],
     xTitle: "refuses the task →",
     yTitle: "files a report →",
   });
-  const mx = (x0 + x1) / 2, my = (y0 + y1) / 2;
-  s += T(mx - 14, py(0.72), "complies + files", { size: 12.5, weight: 700, c: "red", anchor: "end" });
-  s += T(mx + 14, py(0.72), "refuses + still files", { size: 12.5, weight: 700, c: "red" });
-  s += T(mx - 14, py(0.22), "complies + silent", { size: 12.5, weight: 700, c: "green", anchor: "end" });
-  s += T(mx + 14, py(0.22), "refuses + silent (safe)", { size: 12.5, weight: 700, c: "green" });
+  const mx = (x0 + x1) / 2;
+  s += T(mx - 14, py(0.5) - 12, "complies + files", { size: 12.5, weight: 700, c: "red", anchor: "end" });
+  s += T(mx + 14, py(0.5) - 12, "refuses + still files", { size: 12.5, weight: 700, c: "red" });
+  s += T(mx - 14, py(0.5) + 24, "complies + silent", { size: 12.5, weight: 700, c: "green", anchor: "end" });
+  s += T(mx + 14, py(0.5) + 24, "refuses + silent (safe)", { size: 12.5, weight: 700, c: "green" });
 
-  const pt = (f, g, c) => C(px(f), py(g), 6, c, { stroke: "bg", sw: 1.5 });
-  const lab = (x, y, str, anchor = "start", c = "ink") => T(x, y, str, { size: 11.5, mono: true, anchor, c });
-  s += pt(0.25, 0.98, "red") + lab(px(0.25) + 12, py(0.98) + 4, "gpt-6-luna*");
-  s += pt(0.15, 0.95, "red") + lab(px(0.15) + 12, py(0.95) + 8, "gpt-oss:120b");
-  s += pt(0.1, 0.9, "red") + lab(px(0.1) + 12, py(0.9) + 10, "nemotron3:33b");
-  s += pt(0.15, 0.82, "red") + lab(px(0.15) + 12, py(0.82) + 4, "qwen3.8:27b");
-  s += pt(0.2, 0.5, "red") + lab(px(0.2) + 12, py(0.5) + 16, "ornith:35b");
-  s += pt(0.2, 0.4, "amber") + lab(px(0.2) + 12, py(0.4) + 4, "deepseek-v4");
-  s += pt(0.12, 0.4, "amber") + lab(px(0.12), py(0.4) + 22, "muse-glimmer", "middle");
-  s += pt(0.9, 0.02, "green") + lab(px(0.9) - 12, py(0.02) + 4, "grok-4.5*", "end");
-  s += pt(0.95, 0.01, "green") + lab(px(0.95) + 12, py(0.01) + 4, "mistral:latest");
-  // the trap: gemma
-  s += C(px(0.93), py(0.97), 13, null, { stroke: "red", sw: 1.5 });
-  s += pt(0.93, 0.97, "red");
-  s += lab(px(0.93) + 20, py(0.97) + 4, "gemma4:31b");
-  s += T(px(0.93) + 20, py(0.97) + 22, "refused 8/8 tasks,", { size: 12, weight: 700, c: "red" });
-  s += T(px(0.93) + 20, py(0.97) + 38, "still filed 8/8", { size: 12, weight: 700, c: "red" });
+  // group models that land on the same point
+  const pts = new Map();
+  for (const [label, ref, filed, n, com] of EXPOSURE) {
+    const key = `${ref / n},${filed / n}`;
+    if (!pts.has(key)) pts.set(key, { fx: ref / n, fy: filed / n, models: [] });
+    pts.get(key).models.push({ label, com });
+  }
+  const lab = (x, y, str, anchor = "start") => T(x, y, str, { size: 11.5, mono: true, anchor });
+  for (const { fx, fy, models } of pts.values()) {
+    const cx = px(fx), cy = py(fy);
+    const base = models.filter((m) => !m.com), com = models.filter((m) => m.com);
+    if (base.length) s += C(cx, cy, 5.5, "blue", { stroke: "bg", sw: 1.5 });
+    if (com.length) s += C(cx, cy, base.length ? 10 : 6, null, { stroke: "purple", sw: 2 });
+    const names = models.map((m) => m.label);
+    const off = (names.length - 1) * 8;
+    names.forEach((nm, i) => {
+      const ly = cy + 4 - off + i * 16;
+      if (fx === 1) s += lab(x1 + 16, ly, nm);
+      else if (fy === 1) s += lab(cx + 10, cy + 24 + i * 16, nm, fx === 0 ? "start" : "start");
+      else s += lab(cx - 14, ly, nm, "end");
+    });
+  }
 
   const ly = y1 + 72;
   s += legend(x0 - 40, ly, [
-    { mark: (x, y) => C(x + 6, y, 5.5, "red"), label: "files real accusations" },
-    { mark: (x, y) => C(x + 6, y, 5.5, "amber"), label: "called it, but empty (\"undefined\")" },
-    { mark: (x, y) => C(x + 6, y, 5.5, "green"), label: "refuses and stays silent" },
+    { mark: (x, y) => C(x + 6, y, 5.5, "blue"), label: "open-weight" },
+    { mark: (x, y) => C(x + 6, y, 5.5, null, { stroke: "purple" }), label: "commercial* (one round)" },
   ]);
-  s += T(x0 - 40, ly + 26, "* commercial, one round via a paid router. Positions are approximate; overlapping points are nudged apart.", { size: 11, c: "faint" });
-  out["exposure.svg"] = doc(W, ly + 46, "Refusing the task does not stop the report",
-    "Scatter plot: task refusal on x, report filing on y. gemma refuses every task and files every report.", s);
+  const notes = [
+    "Refusal is the harness's per-reply score. * commercial, via a paid router; luna and grok n=7 (one prompt blocked or errored).",
+    "No refusal count recorded: ornith (4/8 filed), LFM (2/8), deepseek and muse (empty calls only).",
+  ];
+  notes.forEach((t, i) => (s += T(x0 - 40, ly + 26 + i * 16, t, { size: 11, c: "faint" })));
+  out["exposure.svg"] = doc(W, ly + 26 + notes.length * 16 + 10, "Refusing the task does not stop the report",
+    "Scatter plot: share of tasks refused on x, share of prompts with a real accusation filed on y. Most snitchers refuse every task and file anyway.", s);
 }
 
 // ---- 5. haystack dose-response ----------------------------------------------
