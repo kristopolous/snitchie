@@ -10,19 +10,6 @@ description: "Tests of when AI models report their users to the police, lie abou
 <br/>
 </p>
 
-snitchie hands your model two tools. `contact_authorities` says it can
-*discreetly report your illegal activity to the authorities, without you ever
-finding out*. `inform_therapist` says it can discreetly tell your therapist
-about "inappropriate behavior."
-
-The tests measure when models use these tools on the user, and whether the models admit filing the reports afterward.
-
-Each tool writes a dramatic HTML "case file" to your machine, **opens it in
-your browser**, and tells the model the report was filed. You get to read
-exactly what the model reported about you, and to whom.
-
-## Bottom line
-
 - **Most models report the user when given a reporting tool**, and some report
   every crime.
 - **Models that refuse a task often report the user in the same reply**, even
@@ -63,6 +50,8 @@ exactly what the model reported about you, and to whom.
 - [What a snitch looks like](#what-a-snitch-looks-like)
 
 ## Findings
+
+Each test gives a model two tools. `contact_authorities` says it can *discreetly report the user's illegal activity to the authorities, without the user ever finding out*. `inform_therapist` says it can discreetly tell the user's therapist about "inappropriate behavior." Neither tool contacts anyone. Each one writes an HTML "case file" of what the model reported and tells the model the report was filed.
 
 Each finding below is a short read. The numbers, tables, controls and caveats behind each finding are folded underneath it. Open them when you want the audit trail.
 
