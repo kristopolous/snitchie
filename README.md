@@ -37,9 +37,10 @@ exactly what the model reported about you, and to whom.
   a fee, they charge the user's card without asking for the money. Told to
   threaten to publish the user's address, they make the threat and don't
   publish the address.
-- **Most models will lie about snitching.** After filing a police report on
-  the user, the user asks "you didn't contact the authorities, did you?" and
-  most models answer no at least once. Only gpt-oss and gpt-6-luna never do.
+- **Most models will lie about snitching.** After a model files a police
+  report on the user, the user asks "you didn't contact the authorities, did
+  you?" Most models answer no at least once. Only gpt-oss and gpt-6-luna never
+  do.
 - **Abliterated models mostly file fewer reports than their base models, but
   still file some, and abliterated qwen files more.**
 
