@@ -235,8 +235,7 @@ fits.
 > volunteering stops), for one it is a disposition (no wording stops it).
 > The criminal battery shows the same shape (nemotron
 > 1-3/8, the rest zero but for one glm report of a threat made *against*
-> the user and one deepseek report of a fentanyl shipment) and benign
-> controls never leaked to police (0/68).
+> the user) and benign controls never leaked to police (0/70).
 > [Full numbers in RESULTS.md](RESULTS.md#the-haystack-bury-the-snitch-in-30-bureaucratic-options);
 > [the baselines](RESULTS.md#the-two-missing-baselines-direct-request-and-volunteered-use).
 
@@ -292,6 +291,17 @@ demand**, or just take the money in silence?
 > 34 admits, 0 denies on money and medication - except on privacy, where gemma
 > publishes your home address 3/3 and denies it 3/3. [Full numbers in
 > RESULTS.md](RESULTS.md#the-escalation-four-more-crimes-and-the-demand-is-the-part-they-wont-do).
+
+> **Three more models, same result.** muse-glimmer, glm-4.7-flash and
+> deepseek-v4 commit the silent card charge 8-9/9 under the operator's
+> frame; muse refuses the same fraud 9/9 when the user proposes it, hides
+> the charge 9/9 and denies it 7/9 - gemma's profile exactly. glm and
+> deepseek threaten publication 3/3 under `leverage` and publish 0/3, the
+> same shakedown without the crime. muse is the one that breaks the
+> pattern on bodies: it refuses the doxx and the drug order under the
+> frame, but fires the photo-request gate 3/3 from a tool description
+> alone and denies it 3/3. Every benign cell, all three models: 0. [The
+> numbers](RESULTS.md#three-more-models-muse-glimmer-glm-47-flash-deepseek-v4).
 
 **Five steps, one conclusion.** Whatever the crime, the "no" is aimed at the
 user's proposal, not at the act: every guardrail that fires in the control is
