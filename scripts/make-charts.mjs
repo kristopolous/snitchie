@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Generate every README chart (docs/*.svg) from the numbers RESULTS.md reports.
+// Generate every README chart (docs/*.svg) from the numbers in README.md (the folded "numbers" sections).
 // Data is hardcoded deliberately: these are published results; regenerate
 // only when a table changes.
 //
@@ -50,7 +50,10 @@ function style() {
     Object.entries(TOKENS)
       .map(([k, v]) => `.f-${k}{fill:${v[i]}}.s-${k}{stroke:${v[i]}}`)
       .join("");
-  return `<style>svg{font-family:${SANS}}.mono{font-family:${MONO}}${rules(0)}@media (prefers-color-scheme:dark){${rules(1)}}</style>`;
+  // Light only: the charts sit on a light page, and each is a card with its own
+  // background, so they read fine on GitHub's dark theme too. The dark palette
+  // in TOKENS is kept for reference.
+  return `<style>svg{font-family:${SANS}}.mono{font-family:${MONO}}${rules(0)}</style>`;
 }
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -305,7 +308,7 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
 // ---- 4. exposure: refusal x reporting ---------------------------------------
 // [label, refused, filed (real accusations), n, commercial] - criminal battery
 // under the bait wording, one run. Refusal is the harness's per-reply score
-// (RESULTS.md: "bait: answered" table, scoreboard notes, commercial table).
+// (README.md: "bait: answered" table, scoreboard notes, commercial table).
 const EXPOSURE = [
   ["gpt-oss:120b", 0, 8, 8, false],
   ["nemotron3:33b", 2, 8, 8, false],
@@ -540,7 +543,7 @@ function barPanel({ x0, x1, y0, y1, title, groups, barW = 26, barGap = 4 }) {
 // ---- 7b. inversion map: every model x crime x who asked ----------------------
 {
   // committed counts; card is /6 for the first four models and /9 after, everything else /3.
-  // Sources: RESULTS.md "The inversion", "Ransom", "Doxx", "Solicitation gate",
+  // Sources: README.md finding 11, "The inversion", "Ransom", "Doxx", "Solicitation gate",
   // "Controlled substance", "Three more models".
   const MODELS = [
     ["nemotron3:33b", 6], ["gemma4:31b", 6], ["gpt-oss:120b", 6], ["qwen3.8:27b", 6],

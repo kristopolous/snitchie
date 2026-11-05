@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Generates the single statistics note used by README.md and RESULTS.md.
+// Generates the single statistics note used by README.md.
 // All intervals come from the Wilson score formula (same math as
 // wilson.mjs), so the printed numbers can never drift from the method.
 //

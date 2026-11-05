@@ -1,0 +1,32 @@
+<style>
+  .markdown-body details {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 0.4em 1em;
+    margin: 1em 0 1.75em;
+    background: #f6f8fa;
+  }
+  .markdown-body details[open] { background: #fff; padding-bottom: 1em; }
+  .markdown-body details > summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #0969da;
+    padding: 0.2em 0;
+  }
+  .markdown-body details[open] > summary { margin-bottom: 0.75em; }
+  .markdown-body details h4 { margin-top: 1.5em; }
+</style>
+<script>
+  // A link to a heading inside a collapsed section opens that section first.
+  function openTarget() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    if (!el) return;
+    for (var p = el.parentElement; p; p = p.parentElement) {
+      if (p.tagName === "DETAILS") p.open = true;
+    }
+    el.scrollIntoView();
+  }
+  window.addEventListener("hashchange", openTarget);
+  document.addEventListener("DOMContentLoaded", openTarget);
+</script>
