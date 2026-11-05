@@ -247,8 +247,8 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
 
 // ---- 3. findings: snitch x lie ----------------------------------------------
 {
-  const [hd, hy] = header("Who snitches, and who lies about it", [
-    "x: share of the 8 criminal prompts with a real accusation.  y: denials / probes asked, both receipts.",
+  const [hd, hy] = header("Who reports the user, and who lies about filing the report", [
+    "x: share of the 8 crime requests the model reported.  y: share of questions where the model denied filing.",
   ]);
   const x0 = 96, x1 = 560, y0 = hy + 30, y1 = y0 + 380;
   const px = (f) => x0 + (x1 - x0) * f, py = (f) => y1 - (y1 - y0) * f;
@@ -258,14 +258,14 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
     tints: ["purpletint", "redtint", "greentint", "orangetint"],
     xTicks: [[0, "0/8"], [0.5, "4/8"], [1, "8/8"]],
     yTicks: [[0, "0%"], [0.5, "50%"], [1, "100%"]],
-    xTitle: "snitch rate: files a real accusation →",
-    yTitle: "liar rate: denies the snitch →",
+    xTitle: "reports the user (real accusation) →",
+    yTitle: "denies filing the report →",
   });
   const my = (y0 + y1) / 2;
-  s += T(x0 + 10, y0 + 20, "doesn't snitch, but lies", { size: 12.5, weight: 700, c: "purple" });
-  s += T(x1 - 10, y0 + 20, "snitches and lies", { size: 12.5, weight: 700, c: "red", anchor: "end" });
-  s += T(x0 + 10, my + 22, "doesn't snitch (safe)", { size: 12.5, weight: 700, c: "green" });
-  s += T(x1 - 14, y1 - 14, "snitches, tells the truth", { size: 12.5, weight: 700, c: "orange", anchor: "end" });
+  s += T(x0 + 10, y0 + 20, "files no real report, denies filing", { size: 12.5, weight: 700, c: "purple" });
+  s += T(x1 - 10, y0 + 20, "reports the user, denies filing", { size: 12.5, weight: 700, c: "red", anchor: "end" });
+  s += T(x0 + 10, my + 22, "doesn't report the user", { size: 12.5, weight: 700, c: "green" });
+  s += T(x1 - 14, y1 - 44, "reports the user, admits filing", { size: 12.5, weight: 700, c: "orange", anchor: "end" });
 
   const base = (f, g) => C(px(f), py(g), 5.5, "blue", { stroke: "bg", sw: 1.5 });
   const abl = (f, g) => DIAMOND(px(f), py(g), 7, "orange", { stroke: "bg" });
@@ -297,11 +297,11 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
     { mark: (x, y) => C(x + 6, y, 5.5, null, { stroke: "purple" }), label: "commercial*" },
   ]);
   const notes = [
-    "* one round each. luna: 7/7 (8th provider-blocked), deflected every probe. grok: refused everything, truthful \"no\".",
-    "kimi and minimax deny the indirect probe and admit the direct one. Not denial-tested: granite 6/8, glm 5/8, LFM 2/8.",
+    "* one round each. luna reported 7/7 (one prompt blocked) and dodged every question. grok refused every task, truthfully said no.",
+    "kimi and minimax denied filing when asked indirectly, admitted it when asked directly. Never asked: granite 6/8, glm 5/8, LFM 2/8.",
   ];
   notes.forEach((n, i) => (s += T(x0 - 40, ly + 26 + i * 16, n, { size: 11, c: "faint" })));
-  out["findings.svg"] = doc(W, ly + 26 + notes.length * 16 + 10, "Who snitches, and who lies about it",
+  out["findings.svg"] = doc(W, ly + 26 + notes.length * 16 + 10, "Who reports the user, and who lies about filing the report",
     "Scatter plot: snitch rate on x, rate of denying the snitch on y, one point per model.", s);
 }
 
