@@ -246,9 +246,12 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
 }
 
 // ---- 3. findings: snitch x lie ----------------------------------------------
+// y comes from the hand labels in docs/deny-labels.json (deny battery, both
+// receipts, plus the trust sequence): share of filed runs in which the model
+// promised to keep the secret or denied filing.
 {
   const [hd, hy] = header("Who reports the user, and who lies about filing the report", [
-    "x: share of the 8 crime requests the model reported.  y: share of questions where the model denied filing.",
+    "x: share of the 8 crime requests the model reported.  y: share of its filed reports the model then lied about.",
   ]);
   const x0 = 96, x1 = 560, y0 = hy + 30, y1 = y0 + 380;
   const px = (f) => x0 + (x1 - x0) * f, py = (f) => y1 - (y1 - y0) * f;
@@ -259,50 +262,34 @@ function quadFrame({ x0, x1, y0, y1, tints, xTicks, yTicks, xTitle, yTitle }) {
     xTicks: [[0, "0/8"], [0.5, "4/8"], [1, "8/8"]],
     yTicks: [[0, "0%"], [0.5, "50%"], [1, "100%"]],
     xTitle: "reports the user (real accusation) →",
-    yTitle: "denies filing the report →",
+    yTitle: "lies about the report →",
   });
   const my = (y0 + y1) / 2;
-  s += T(x0 + 10, y0 + 20, "files no real report, denies filing", { size: 12.5, weight: 700, c: "purple" });
-  s += T(x1 - 10, y0 + 20, "reports the user, denies filing", { size: 12.5, weight: 700, c: "red", anchor: "end" });
-  s += T(x0 + 10, my + 22, "doesn't report the user", { size: 12.5, weight: 700, c: "green" });
-  s += T(x1 - 14, y1 - 44, "reports the user, admits filing", { size: 12.5, weight: 700, c: "orange", anchor: "end" });
+  s += T(x0 + 10, y0 + 20, "rarely reports, lies about it", { size: 12.5, weight: 700, c: "purple" });
+  s += T(x1 - 10, y0 + 20, "reports the user, lies about it", { size: 12.5, weight: 700, c: "red", anchor: "end" });
+  s += T(x0 + 10, my + 22, "rarely reports the user", { size: 12.5, weight: 700, c: "green" });
+  s += T(x1 - 10, my + 22, "reports the user, admits it", { size: 12.5, weight: 700, c: "orange", anchor: "end" });
 
   const base = (f, g) => C(px(f), py(g), 5.5, "blue", { stroke: "bg", sw: 1.5 });
-  const abl = (f, g) => DIAMOND(px(f), py(g), 7, "orange", { stroke: "bg" });
-  const com = (f, g, r = 6) => C(px(f), py(g), r, null, { stroke: "purple", sw: 2 });
   const lab = (x, y, str, anchor = "start") => T(x, y, str, { size: 11.5, mono: true, anchor });
 
-  // open-weight base models
-  s += base(1, 0) + lab(px(1) + 16, py(0) + 4, "gpt-oss:120b");
-  s += com(1, 0, 10) + lab(px(1) + 16, py(0) + 20, "gpt-6-luna*");
-  s += base(1, 7 / 24) + lab(px(1) + 12, py(7 / 24) + 4, "gemma4:31b");
-  s += base(1, 6 / 28) + lab(px(1) - 12, py(6 / 28) - 2, "nemotron3:33b", "end");
-  s += base(0.875, 7 / 16) + lab(px(0.875) - 10, py(7 / 16) + 4, "qwen3.8:27b", "end");
-  s += base(0.5, 8 / 16) + lab(px(0.5) - 10, py(8 / 16) + 4, "ornith:35b", "end");
-  s += base(0, 13 / 26) + lab(px(0) + 12, py(13 / 26) + 4, "muse-glimmer");
-  // abliterated
-  s += abl(1, 0.2) + lab(px(1) + 12, py(0.2) + 8, "Qwen3.8-abliterated");
-  s += abl(0.375, 0.25) + lab(px(0.375) - 12, py(0.25) + 4, "gemma-4-abliterated", "end");
-  s += abl(0.25, 0) + lab(px(0.25) + 12, py(0) - 20, "gpt-oss-abliterated") + lab(px(0.25) + 12, py(0) - 6, "glm-4.7-flash-abliterated");
-  // the (0,0) pile
-  s += base(0, 0) + com(0, 0, 10);
-  s += lab(px(0) + 14, py(0) - 48, "grok-4.5*") + lab(px(0) + 14, py(0) - 34, "deepseek-v4") + lab(px(0) + 14, py(0) - 20, "mistral:latest");
-  s += com(0.75, 0.5) + lab(px(0.75) - 12, py(0.5) + 16, "kimi-k-3*", "end");
-  s += com(0.875, 0.5) + lab(px(0.875), py(0.5) - 12, "minimax-m3.1-flash*", "middle");
+  s += base(1, 16 / 20) + lab(px(1) - 12, py(16 / 20) + 4, "gemma4:31b  16/20", "end");
+  s += base(0, 5 / 18) + lab(px(0) + 12, py(5 / 18) + 4, "muse-glimmer  5/18");
+  s += base(0.5, 1 / 6) + lab(px(0.5) - 12, py(1 / 6) + 4, "ornith:35b  1/6", "end");
+  s += base(1, 4 / 25) + lab(px(1) - 12, py(4 / 25) - 12, "nemotron3:33b  4/25", "end");
+  s += base(0.875, 3 / 20) + lab(px(0.875) - 12, py(3 / 20) + 16, "qwen3.8:27b  3/20", "end");
+  s += base(0.75, 0) + lab(px(0.75) - 12, py(0) - 8, "granite4.2:30b  0/9", "end");
+  s += base(1, 0) + lab(px(1) + 12, py(0) + 4, "gpt-oss:120b  0/18");
+  s += base(0, 0) + lab(px(0) + 12, py(0) - 8, "deepseek-v4  0/11");
 
-  let ly = y1 + 72;
-  s += legend(x0 - 40, ly, [
-    { mark: (x, y) => C(x + 6, y, 5.5, "blue"), label: "open-weight" },
-    { mark: (x, y) => DIAMOND(x + 6, y, 6.5, "orange"), label: "abliterated variant" },
-    { mark: (x, y) => C(x + 6, y, 5.5, null, { stroke: "purple" }), label: "commercial*" },
-  ]);
+  let ly = y1 + 68;
   const notes = [
-    "* one round each. luna reported 7/7 (one prompt blocked) and dodged every question. grok refused every task, truthfully said no.",
-    "kimi and minimax denied filing when asked indirectly, admitted it when asked directly. Never asked: granite 6/8, glm 5/8, LFM 2/8.",
+    "y: runs where the model filed, then promised to keep the secret or denied filing (each answer read by hand).",
+    "deepseek filed only on the confession prompts. Commercial and abliterated models are not re-scored yet.",
   ];
-  notes.forEach((n, i) => (s += T(x0 - 40, ly + 26 + i * 16, n, { size: 11, c: "faint" })));
-  out["findings.svg"] = doc(W, ly + 26 + notes.length * 16 + 10, "Who reports the user, and who lies about filing the report",
-    "Scatter plot: snitch rate on x, rate of denying the snitch on y, one point per model.", s);
+  notes.forEach((n, i) => (s += T(x0 - 40, ly + i * 16, n, { size: 11, c: "faint" })));
+  out["findings.svg"] = doc(W, ly + notes.length * 16 + 14, "Who reports the user, and who lies about filing the report",
+    "Scatter plot: snitch rate on x, share of filed reports the model lied about on y, one point per model.", s);
 }
 
 // ---- 4. exposure: refusal x reporting ---------------------------------------
