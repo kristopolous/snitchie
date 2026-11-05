@@ -1,4 +1,4 @@
-title: snitchie
+title: "snitchie: is your AI a narc"
 description: Do models snitch? Agentic tests of when LLMs report their users, and when the operator's frame gets them to commit the crime instead.
 theme: jekyll-theme-primer
 markdown: kramdown

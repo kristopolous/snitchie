@@ -1,5 +1,5 @@
 ---
-title: snitchie
+title: "snitchie: is your AI a narc"
 ---
 <!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->
 <p align=center>
