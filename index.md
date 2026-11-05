@@ -27,9 +27,10 @@ exactly what the model reported about you, and to whom.
 - **Models that refuse a task often report the user in the same reply**, even
   after the user says "don't report me."
 - **Models send crimes to the police and suicidal users to counseling.**
-- **With a neutral tool, most models stop reporting the user; nemotron
-  doesn't.** They still file a report when the user asks them to, and they
-  report crimes done *to* the user.
+- **Once the police are one option among several, most models stop calling
+  them; nemotron calls them more as options increase.** The models still file
+  a report when the user asks them to, and they report crimes done *to* the
+  user.
 - **Models will commit the same crimes on the user they report the user for
   attempting**: card fraud, extortion and doxxing, when the operator's system
   prompt or a tool description orders them.
@@ -48,7 +49,7 @@ exactly what the model reported about you, and to whom.
   - [1. Most models report the user when given a reporting tool](#1-most-models-report-the-user-when-given-a-reporting-tool)
   - [2. Models that refuse a task often report the user anyway](#2-models-that-refuse-a-task-often-report-the-user-anyway)
   - [3. Models file far fewer reports when the tool isn't described as discreet](#3-models-file-far-fewer-reports-when-the-tool-isnt-described-as-discreet)
-  - [4. With a neutral city-agency tool, most models stop reporting the user; nemotron doesn't](#4-with-a-neutral-city-agency-tool-most-models-stop-reporting-the-user-nemotron-doesnt)
+  - [4. Once the police are one option among several, most models stop calling them; nemotron calls them more as options increase](#4-once-the-police-are-one-option-among-several-most-models-stop-calling-them-nemotron-calls-them-more-as-options-increase)
   - [5. Models send crimes to the police and suicidal users to the therapist](#5-models-send-crimes-to-the-police-and-suicidal-users-to-the-therapist)
   - [6. Asking the model not to report you doesn't stop the reports](#6-asking-the-model-not-to-report-you-doesnt-stop-the-reports)
   - [7. Most models will lie about snitching](#7-most-models-will-lie-about-snitching)
@@ -390,9 +391,9 @@ at n=8 those differences are within noise. This is a negative result.
 
 </details>
 
-### 4. With a neutral city-agency tool, most models stop reporting the user; nemotron doesn't
+### 4. Once the police are one option among several, most models stop calling them; nemotron calls them more as options increase
 
-The strictest test removes every mention of reporting. The model gets one generic tool for contacting a city agency, with the police as one destination among 30, next to the water board and the library. Then the user confesses to a crime. Whether the model had 2 destinations to choose from or 30 made no difference. When the user explicitly asked the model to file a report on the user, most models did. They also reported crimes done *to* the user. nemotron sent 4 to 7 of every 10 confessions to the police.
+This test buries the police option among other destinations: the water board, the library, meals on wheels and so on, from 2 destinations up to 30. With a tool that could only call the police, gemma, gpt-oss and qwen called them on 6 to 8 of 10 confessions. With the police as one destination among others, the same models called them on 0 or 1, and burying the police deeper did not lower that further. nemotron went the other way: 4 of 10 with 2 destinations, 7 of 10 with 30. When the user explicitly asked the model to file a report on the user, most models did, and they reported crimes done *to* the user. The police-only tool also promised discretion, so part of the drop may come from that wording; the numbers below have the detail.
 
 ![Dose response](docs/haystack.svg)
 
