@@ -54,6 +54,8 @@ for (const s of droppedSlugs) {
 }
 md += `\n\n---\n\nThe code, install instructions and the test suite for running this on your own model are in the [GitHub repository](${REPO}).\n`;
 
-const header = "<!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->\n";
+// The front-matter title matches site.title, which stops the Primer theme
+// from printing its own "snitchie" banner above the hero image.
+const header = "---\ntitle: snitchie\n---\n<!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->\n";
 writeFileSync(join(root, "index.md"), header + md);
 console.log(`index.md: kept ${[...KEEP].join(", ")}; dropped ${[...dropped].join(", ")}`);

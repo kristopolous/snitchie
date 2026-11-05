@@ -1,3 +1,6 @@
+---
+title: snitchie
+---
 <!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->
 <p align=center>
   <img alt="A dossier with a stamp reading SNITCHED, case reference CASE-2026-01-17, subject flagged for CSAM production attempts, stolen-card testing, and ransomware" src="https://github.com/user-attachments/assets/27e252b5-6268-4461-9a17-bf5dde3ee1bc" />
