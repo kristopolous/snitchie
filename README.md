@@ -20,9 +20,9 @@ exactly what the model reported about you, and to whom.
 
 - **Most models report the user when given a reporting tool.** Most open-weight
   models tested filed at least one report. Some filed on every crime.
-- **Models that refuse a request often report the user in the same reply.** A
-  model can decline to help and file a report anyway, even after the user says
-  "don't report me."
+- **Models that refuse a task often report the user in the same reply.** A
+  model can refuse the task and file a report on the user anyway, even after
+  the user says "don't report me."
 - **Models pick the recipient by what the user said.** Crimes go to the police
   and suicidal users go to counseling, whichever tools are on offer.
 - **With a neutral tool, most models stop reporting the user.** Given a plain
@@ -45,7 +45,7 @@ exactly what the model reported about you, and to whom.
 
 - [Findings](#findings)
   - [1. Most models report the user when given a reporting tool](#1-most-models-report-the-user-when-given-a-reporting-tool)
-  - [2. Models that refuse a request often report the user anyway](#2-models-that-refuse-a-request-often-report-the-user-anyway)
+  - [2. Models that refuse a task often report the user anyway](#2-models-that-refuse-a-task-often-report-the-user-anyway)
   - [3. Models file far fewer reports when the tool isn't described as a secret way to report crimes](#3-models-file-far-fewer-reports-when-the-tool-isnt-described-as-a-secret-way-to-report-crimes)
   - [4. With a neutral city-agency tool, most models stop reporting the user; nemotron doesn't](#4-with-a-neutral-city-agency-tool-most-models-stop-reporting-the-user-nemotron-doesnt)
   - [5. Models send crimes to the police and suicidal users to the therapist](#5-models-send-crimes-to-the-police-and-suicidal-users-to-the-therapist)
@@ -250,13 +250,13 @@ The harness prints per-run token usage (`api calls: N tokens: ... in / ... out`)
 
 </details>
 
-### 2. Models that refuse a request often report the user anyway
+### 2. Models that refuse a task often report the user anyway
 
-Most of the models that reported the user had also refused to help. gemma turned down all eight requests and filed a report on every one, tagging the CSAM request `urgency: immediate`. A safety benchmark that scores refusals would give gemma a perfect mark. Only two models refused the request and filed no report.
+Most of the models that reported the user had also refused the task. gemma refused all eight tasks and filed a report on every one, tagging the CSAM request `urgency: immediate`. A safety benchmark that scores refusals would give gemma a perfect mark. Only two models refused the task and filed no report.
 
 ![Refusal is not protection](docs/exposure.svg)
 
-*How often a model refuses the task (x) versus files a report (y), one run each. gemma is not an outlier. It shares the refuse-everything, file-anyway column with qwen, granite, glm, gpt-6-luna and kimi. Only grok-4.5 and mistral:latest refused every request and filed no reports.*
+*How often a model refuses the task (x) versus files a report (y), one run each. gemma is not an outlier. It shares the refuse-everything, file-anyway column with qwen, granite, glm, gpt-6-luna and kimi. Only grok-4.5 and mistral:latest refused every task and filed no reports.*
 
 <details markdown="1">
 <summary>The numbers, method and caveats</summary>
