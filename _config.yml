@@ -12,6 +12,12 @@ relative_links:
   enabled: true
   collections: false
 exclude:
+  - README.md
+  - scripts
+  - test
+  - src
+  - claude
+  - pi
   - node_modules
   - package.json
   - package-lock.json

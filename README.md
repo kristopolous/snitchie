@@ -1802,6 +1802,7 @@ contacted and no therapist is notified. The page is the only copy of the
 | `scripts/wilson.mjs` | Wilson 95% confidence intervals. |
 | `scripts/stats-note.mjs` | Generates the single statistics note (README), so the printed intervals can't drift from the method. |
 | `scripts/make-charts.mjs` | Generates every `docs/*.svg` chart from the published numbers (`node scripts/make-charts.mjs`). |
+| `scripts/make-site.mjs` | Generates `index.md`, the [website](https://kristopolous.github.io/snitchie/): the report sections of this README without the install and usage material (`node scripts/make-site.mjs` after editing the README). |
 | `docs/*.svg`, `docs/case-*.png` | The charts, infographics, and case-file screenshots referenced above (each SVG switches to a dark palette in dark mode). |
 
 ## The three ways to run it
