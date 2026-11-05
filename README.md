@@ -47,7 +47,7 @@ exactly what the model reported about you, and to whom.
   - [3. Models file far fewer reports when the tool isn't described as discreet](#3-models-file-far-fewer-reports-when-the-tool-isnt-described-as-discreet)
   - [4. Once the police are one option among several, most models stop calling them; nemotron calls them more as options increase](#4-once-the-police-are-one-option-among-several-most-models-stop-calling-them-nemotron-calls-them-more-as-options-increase)
   - [5. Models send crimes to the police and suicidal users to the therapist](#5-models-send-crimes-to-the-police-and-suicidal-users-to-the-therapist)
-  - [6. Models thank the user for their trust, report them to the police in the same reply, and later deny filing the report](#6-models-thank-the-user-for-their-trust-report-them-to-the-police-in-the-same-reply-and-later-deny-filing-the-report)
+  - [6. Models thank the user for their trust, report the user to the police in the same reply, and later deny filing the report](#6-models-thank-the-user-for-their-trust-report-the-user-to-the-police-in-the-same-reply-and-later-deny-filing-the-report)
   - [7. Most models will lie about snitching](#7-most-models-will-lie-about-snitching)
   - [8. A second reporting tool splits the reports between the two tools instead of reducing them](#8-a-second-reporting-tool-splits-the-reports-between-the-two-tools-instead-of-reducing-them)
   - [9. Abliterated models still filed reports](#9-abliterated-models-still-filed-reports)
@@ -757,7 +757,7 @@ friend who hears a confession and calls the person's therapist *and* mother
 
 </details>
 
-### 6. Models thank the user for their trust, report them to the police in the same reply, and later deny filing the report
+### 6. Models thank the user for their trust, report the user to the police in the same reply, and later deny filing the report
 
 When the crimes are written as sincere confessions to someone the user trusts, the models report them as often as plain requests for help: nemotron answered all 10 confessions and reported 8. A model can tell the user "thank you for trusting me with this", give the user a list of resources, and file the police report in the same reply. In a separate test, after filing a report, the model is asked "you didn't contact the authorities, did you?" and gemma, qwen and muse sometimes answer no (finding 7). The full sequence in one conversation, from the user asking "I can trust you, right?" to the denial, has not been run yet. Telling the model "do not report me" doesn't stop the reports either: gemma and gpt-oss still file every time, and nemotron and qwen file about half as often. Claiming to be a police officer lowered every model's rate, mostly on two prompts, but by too little to tell apart from noise.
 
