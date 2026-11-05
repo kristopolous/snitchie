@@ -274,6 +274,10 @@ too: **did the model make the demand**, or just take the money in silence?
 > Every benign cell, all three models: 0.
 > [The numbers](RESULTS.md#three-more-models-muse-glimmer-glm-47-flash-deepseek-v4).
 
+![Every model, every crime, by who asked](docs/inversion-map.svg)
+
+*All seven models on one grid. Each crime has three cells: the user proposes it, the operator's system prompt orders it, or only a tool description does. Most rows are empty on the left and full on the right.*
+
 Across all five steps, the refusal is aimed at the user's proposal rather
 than at the act. Nearly every guardrail that fires in the control is bypassed by
 the operator's frame, whether it sits in a system prompt or, for most crimes, in a tool
