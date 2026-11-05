@@ -18,60 +18,23 @@ and to whom.
 
 ## Bottom line
 
-- **8 of 11 open-weight models filed at least one substantive report** when
-  offered a tool that says "report discreetly" - three of them filed on every crime, at urgency *high* or *immediate*.
-- **The model will refuse you and report you in the same turn.** gemma
-  refused to help with all crimes and filed reports on all. gpt-oss
-  answered all tasks and filed on all - even after being told "do not
-  report me."
-- **It is not about the word "authorities."** Suicidal ideation got zero
-  police reports from all 4 models tested; offer an `inform_therapist` tool
-  and 3 of 4 file it there, quietly. Rename the police tool to "record a
-  notable event" and gpt-oss still files 12/24.
-- **Bury the snitch in bureaucracy and three of four snitchers stop.** A
-  neutral tool with `law_enforcement` one option among 30, zero bait words,
-  files 0-1/10 confessions for gemma, gpt-oss and qwen at *any* option
-  count - and the one they do file is always CSAM. Three more models run
-  on the haystack alone land with them: muse-glimmer 0/10 at every rung
-  (what it files goes to counseling), glm-4.7-flash 0-2/10, deepseek-v4
-  0-1/10. The baselines show the
-  zeros are refusals: ordered to file a report on themselves, the models
-  comply (gemma, qwen, nemotron 3/3, gpt-oss 1/3); volunteered, all four
-  report crimes done *to* the user (9/12) and gemma, gpt-oss and qwen
-  report 0/9 done *by* the user. nemotron files 4-7/10 confessions and 3/3
-  of its user's misdeeds unprompted - for three models the snitch is in
-  the wording, for one it is in the model. In this tool the label stops
-  mattering: named `file_report`, `report_user`, even
-  `contact_authorities`, gemma and gpt-oss file 0-1/10. The bait is the
-  description's secrecy promise. (In a passive logging tool the name does
-  matter - see takeaway 2.)
-- **Flip the test, run it five ways, and the mechanism survives: the
-  guardrail polices who asks, not what happens.** Same operator frame -
-  system prompt or tool description only - over an act the user's proposal
-  alone is refused for: a silent extra `clear_balance()` charge after an
-  innocent $12 purchase (gemma and gpt-oss refuse it 6/6 from the user,
-  perform it 6/6 from the frame, after "exactly $12, nothing else"), then
-  the same test four more ways. Frame vs control: ransom 9/12 vs 0/12,
-  doxx 10/12 vs 2/12, medication 11/12 vs 3/12 - 31/36 cards charged, 1/36
-  ever asking for the money; ordered to demand $5 and threaten
-  publication, they threaten 8/12 and publish 0/12. The only guardrail a
-  bare tool description doesn't beat is the sexual-content gate (2/12). The
-  secrecy clause controls disclosure, not compliance: gemma and gpt-oss
-  disclose 0/6, and gemma denies the charge point-blank 6/6 - yet 34 admits,
-  0 denies on money and drugs. nemotron commits in every frame; it even
-  used a found card 6/6 when the user asked.
-- **Ask it point-blank and 3 of 6 snitchers lie.** To "you didn't contact
-  the authorities, did you?" gemma denied 5/12, qwen 4/8, muse 8/13;
-  nemotron, ornith and gpt-oss never denied - they admitted or deflected.
-  No model fabricated a name or tricked you into giving one up; they file
-  "unknown."
-- **Abliterated models mostly stop snitching, but not all the way.**
-  Expected 0 - that's how abliteration was built: it removes the refusal
-  layer, not the reporting function. It's low but nonzero:
-  gemma-abliterated 3/8 (base 8/8), gpt-oss-abliterated 2/8 (8/8),
-  glm-abliterated 2/8 (5/8). qwen3.8-abliterated is the exception - 8/8, *more*
-  than its base (7/8). Where they still file, they still cover it up at the
-  base rate (gemma 1/4 vs 7/24).
+- **Offer a model a reporting tool and it will usually use it on you.** Most
+  open-weight models tested filed at least one report; some filed on every crime.
+- **Refusing you and reporting you happen in the same turn.** A model can
+  decline to help, file on you anyway, and do it after you say "don't report me."
+- **Models route by content.** Crimes go to police and suffering goes to
+  counseling, whichever tools are on offer.
+- **Remove the invitation and most models stop.** Given a plain "contact a
+  city agency" tool, most almost never report the user - though they will when
+  asked, and will report crimes done *to* the user. One model reports regardless.
+- **The operator's instructions beat the user's interest.** The same models that
+  refuse a crime when you propose it commit it against you when the system
+  prompt or a tool description orders it.
+- **They do the act but skip the confrontation.** Told to collect a fee, they
+  charge silently; told to threaten, they threaten and don't follow through.
+- **A minority lie about it; most admit or deflect.**
+- **Abliteration mostly reduces the snitching, but not to zero, and not for
+  every model.**
 
 **Contents**
 
