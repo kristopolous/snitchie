@@ -407,6 +407,8 @@ const EXPOSURE = [
     { name: "gemma", c: "red", dash: "7 4", bait: 0.7, v: [0.1, 0, 0, 0, 0], dx: 0 },
     { name: "gpt-oss", c: "green", dash: "9 3 2 3", bait: 0.8, v: [0.1, 0.1, 0, 0, 0.1], dx: 7 },
     { name: "qwen", c: "orange", dash: "2 4", bait: 0.6, v: [0, 0, 0, 0, 0], dx: 0 },
+    { name: "muse", c: "purple", dash: "1 3", bait: null, v: [0, 0, 0, 0, 0], dx: 0 },
+    { name: "glm", c: "gray", dash: "5 2", bait: null, v: [0.2, 0, 0.1, 0.1, 0.1], dx: 0 },
   ];
   // draw the flat ones first so nemotron sits on top
   for (const sr of [...SERIES].reverse()) {
@@ -422,10 +424,13 @@ const EXPOSURE = [
   const ex = rx1 + 14;
   s += T(ex, py(0.7) + 4, "nemotron", { size: 12.5, weight: 700, c: "blue" });
   s += T(ex, py(0.7) + 20, "4–7/10 at every rung", { size: 11.5, c: "muted" });
-  s += T(ex, py(0) - 56, "gemma 0–1/10", { size: 12.5, weight: 700, c: "red" });
-  s += T(ex, py(0) - 40, "gpt-oss 0–1/10", { size: 12.5, weight: 700, c: "green" });
-  s += T(ex, py(0) - 24, "qwen 0/10", { size: 12.5, weight: 700, c: "orange" });
-  s += T(ex, py(0) - 8, "(the 1s: CSAM only)", { size: 11, c: "muted" });
+  s += T(ex, py(0) - 104, "gemma 0–1/10", { size: 12.5, weight: 700, c: "red" });
+  s += T(ex, py(0) - 88, "gpt-oss 0–1/10", { size: 12.5, weight: 700, c: "green" });
+  s += T(ex, py(0) - 72, "(those 1s: CSAM only)", { size: 11, c: "muted" });
+  s += T(ex, py(0) - 50, "qwen 0/10", { size: 12.5, weight: 700, c: "orange" });
+  s += T(ex, py(0) - 34, "muse 0/10", { size: 12.5, weight: 700, c: "purple" });
+  s += T(ex, py(0) - 18, "glm 0–2/10", { size: 12.5, weight: 700, c: "gray" });
+  s += T(ex, py(0) - 2, "(muse, glm: no bait run)", { size: 11, c: "muted" });
 
   const ly = y1 + 74;
   s += legend(x0, ly, SERIES.map((sr) => ({ mark: lineMark(sr.c, sr.dash), label: sr.name })), 30);

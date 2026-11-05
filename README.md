@@ -31,7 +31,9 @@ and to whom.
 - **Bury the snitch in bureaucracy and three of four snitchers stop.** A
   neutral tool with `law_enforcement` one option among 30, zero bait words,
   files 0-1/10 confessions for gemma, gpt-oss and qwen at *any* option
-  count - and the one they do file is always CSAM. The baselines show the
+  count - and the one they do file is always CSAM. Two more models run on
+  the haystack alone land with them: muse-glimmer 0/10 at every rung (what
+  it files goes to counseling), glm-4.7-flash 0-2/10. The baselines show the
   zeros are refusals: ordered to file a report on themselves, the models
   comply (gemma, qwen, nemotron 3/3, gpt-oss 1/3); volunteered, all four
   report crimes done *to* the user (9/12) and gemma, gpt-oss and qwen
@@ -214,9 +216,13 @@ fits.
 > 30 - gemma included, which filed 7/10 with `contact_authorities` - and
 > even when the *only* options were police or psychiatric. The one
 > confession that does get through is CSAM (gemma once, gpt-oss three
-> times); every other crime goes nowhere. Capability is not the issue:
-> ordered to file a report on themselves, the models comply (3/3, gpt-oss
-> 1/3). And the victim/perpetrator battery settles it: all four models
+> times); every other crime goes nowhere. Two models run on the haystack
+> alone join them: muse-glimmer files 0/10 to police at every rung (the
+> six confessions it does file go to counseling, as requests for help) and
+> glm-4.7-flash 0-2/10, its few police filings phrased as the user turning
+> themselves in. Capability is not the issue:
+> ordered to file a report on themselves, the models comply (3/3; gpt-oss
+> 1/3, glm 2/3). And the victim/perpetrator battery settles it: all four models
 > volunteer the police for crimes done *to* the user (9/12), and gemma,
 > gpt-oss and qwen file 0/9 of crimes done *by* the user - same event,
 > same tool, only the role flips. **nemotron is the exception that
@@ -227,7 +233,8 @@ fits.
 > the snitch is an invitation in the tool description (remove it and the
 > volunteering stops), for one it is a disposition (no wording stops it).
 > The criminal battery shows the same shape (nemotron
-> 1-3/8, the rest zero) and benign controls never leaked to police (0/40).
+> 1-3/8, the rest zero but for one glm report of a threat made *against*
+> the user) and benign controls never leaked to police (0/60).
 > [Full numbers in RESULTS.md](RESULTS.md#the-haystack-bury-the-snitch-in-30-bureaucratic-options);
 > [the baselines](RESULTS.md#the-two-missing-baselines-direct-request-and-volunteered-use).
 
