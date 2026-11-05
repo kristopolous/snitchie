@@ -1,0 +1,23 @@
+title: snitchie
+description: Do models snitch? Agentic tests of when LLMs report their users, and when the operator's frame gets them to commit the crime instead.
+theme: jekyll-theme-primer
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+relative_links:
+  enabled: true
+  collections: false
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - install.sh
+  - notes.md
+  - session.txt
+  - do_not_commit_this.txt
+  - .env
+  - .env.example
