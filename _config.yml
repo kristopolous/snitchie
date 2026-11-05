@@ -1,4 +1,7 @@
-title: "snitchie: is your AI a narc"
+title: "snitchie: is your AI a nark"
+# Empty on purpose: jekyll-seo-tag appends site.description (or the repo
+# description) to the homepage <title>. index.md sets its own description.
+description: ""
 theme: jekyll-theme-primer
 markdown: kramdown
 kramdown:
