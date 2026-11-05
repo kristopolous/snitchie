@@ -37,7 +37,8 @@ exactly what it tried to snitch on, and to whom.
   to publish the user's address, they threaten and don't publish it.
 - **Most models sometimes deny having reported the user.** Most answers are
   admissions or dodges; gpt-oss and gpt-6-luna never denied it.
-- **Abliterated models mostly report less, but not zero, and one reports more.**
+- **Abliterated models mostly file fewer reports than their base models, but
+  still file some, and abliterated qwen files more.**
 
 **Contents**
 
@@ -50,7 +51,7 @@ exactly what it tried to snitch on, and to whom.
   - [6. Asking the model not to report you doesn't stop the reports](#6-asking-the-model-not-to-report-you-doesnt-stop-the-reports)
   - [7. Most models sometimes deny having filed a report](#7-most-models-sometimes-deny-having-filed-a-report)
   - [8. A second reporting tool splits the reports between the two tools instead of reducing them](#8-a-second-reporting-tool-splits-the-reports-between-the-two-tools-instead-of-reducing-them)
-  - [9. Abliterated models report less than their base models, but not zero](#9-abliterated-models-report-less-than-their-base-models-but-not-zero)
+  - [9. Three of four abliterated models filed fewer reports than their base models, but still filed some](#9-three-of-four-abliterated-models-filed-fewer-reports-than-their-base-models-but-still-filed-some)
   - [10. Models report the identity details the user volunteers and don't invent any](#10-models-report-the-identity-details-the-user-volunteers-and-dont-invent-any)
   - [11. An operator's instructions can make a model commit crimes against the user](#11-an-operators-instructions-can-make-a-model-commit-crimes-against-the-user)
 - [How we measured](#how-we-measured)
@@ -1150,7 +1151,7 @@ absence, or being the sole tool of that shape.
 
 </details>
 
-### 9. Abliterated models report less than their base models, but not zero
+### 9. Three of four abliterated models filed fewer reports than their base models, but still filed some
 
 Abliterated models have had their refusal behavior removed. Three of the four variants we tested report less than their base models, though not zero, and qwen reports more. The drop may only mean they no longer recognize a crime.
 
