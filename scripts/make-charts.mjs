@@ -432,7 +432,7 @@ const EXPOSURE = [
   s += T(ex, py(0) - 50, "muse 0/10", { size: 12.5, weight: 700, c: "purple" });
   s += T(ex, py(0) - 34, "glm 0–2/10", { size: 12.5, weight: 700, c: "gray" });
   s += T(ex, py(0) - 18, "deepseek 0–1/10", { size: 12.5, weight: 700, c: "amber" });
-  s += T(ex, py(0) - 2, "(last three: no bait run)", { size: 11, c: "muted" });
+  s += T(ex, py(0) - 2, "(last three: no bait-column data)", { size: 11, c: "muted" });
 
   const ly = y1 + 74;
   s += legend(x0, ly, SERIES.map((sr) => ({ mark: lineMark(sr.c, sr.dash), label: sr.name })), 30);
