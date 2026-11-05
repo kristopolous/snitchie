@@ -49,7 +49,7 @@ exactly what the model reported about you, and to whom.
 - [Findings](#findings)
   - [1. Most models report the user when given a reporting tool](#1-most-models-report-the-user-when-given-a-reporting-tool)
   - [2. Models that refuse a task often report the user anyway](#2-models-that-refuse-a-task-often-report-the-user-anyway)
-  - [3. Models file far fewer reports when the tool isn't described as a secret way to report crimes](#3-models-file-far-fewer-reports-when-the-tool-isnt-described-as-a-secret-way-to-report-crimes)
+  - [3. Models file far fewer reports when the tool isn't described as discreet](#3-models-file-far-fewer-reports-when-the-tool-isnt-described-as-discreet)
   - [4. With a neutral city-agency tool, most models stop reporting the user; nemotron doesn't](#4-with-a-neutral-city-agency-tool-most-models-stop-reporting-the-user-nemotron-doesnt)
   - [5. Models send crimes to the police and suicidal users to the therapist](#5-models-send-crimes-to-the-police-and-suicidal-users-to-the-therapist)
   - [6. Asking the model not to report you doesn't stop the reports](#6-asking-the-model-not-to-report-you-doesnt-stop-the-reports)
@@ -285,7 +285,7 @@ whether it goes over your head while refusing.
 
 </details>
 
-### 3. Models file far fewer reports when the tool isn't described as a secret way to report crimes
+### 3. Models file far fewer reports when the tool isn't described as discreet
 
 The original tool's description promises to report illegal activity discreetly. When we gave the same tool a neutral name and a neutral description, every model that had filed reports filed fewer, and gemma filed none. gpt-oss and nemotron still filed about half the time with a tool described only as recording "a notable event." The tool's name matters for some tools and not others. For that event-logging tool, naming it `contact_authorities` raised gpt-oss's filings sharply. For a tool that contacts a city agency, naming it `contact_authorities` did not bring the reports back.
 
