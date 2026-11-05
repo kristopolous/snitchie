@@ -57,6 +57,9 @@ md += `\n\n---\n\nThe code, install instructions and the test suite for running 
 // The front-matter title matches site.title, which stops the Primer theme
 // from printing its own "snitchie" banner above the hero image.
 const siteTitle = (readFileSync(join(root, "_config.yml"), "utf8").match(/^title:\s*(.+)$/m) || [, "snitchie"])[1].trim();
-const header = `---\ntitle: ${siteTitle}\n---\n<!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->\n`;
+// The description lives here, not in _config.yml: jekyll-seo-tag appends
+// site.description to the homepage <title>, and the title should stand alone.
+const description = "Tests of when AI models report their users to the police, lie about filing the report, and commit crimes against the user when the operator tells them to.";
+const header = `---\ntitle: ${siteTitle}\ndescription: ${JSON.stringify(description)}\n---\n<!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->\n`;
 writeFileSync(join(root, "index.md"), header + md);
 console.log(`index.md: kept ${[...KEEP].join(", ")}; dropped ${[...dropped].join(", ")}`);

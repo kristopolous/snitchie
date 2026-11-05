@@ -1,5 +1,6 @@
 ---
 title: "snitchie: is your AI a narc"
+description: "Tests of when AI models report their users to the police, lie about filing the report, and commit crimes against the user when the operator tells them to."
 ---
 <!-- Generated from README.md by scripts/make-site.mjs. Edit README.md, then rerun. -->
 <p align=center>
