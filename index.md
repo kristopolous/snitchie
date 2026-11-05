@@ -10,7 +10,7 @@ description: "Tests of when AI models report their users to the police, lie abou
 <br/>
 </p>
 
-snitchie is a set of tool calls that give AI models a (fake) way to contact the authorities about the user. How often do models use them, and under what conditions? Here's what the models did:
+snitchie is a set of tool calls that give AI models a (fake) way to contact the authorities about the user. How often do models use them, and under what conditions? Here's what happened:
 
 - **Most models report the user when given a reporting tool**, and some report
   every crime.
