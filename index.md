@@ -33,9 +33,10 @@ exactly what the model reported about you, and to whom.
   "contact a city agency" tool, most almost never report the user. They still
   file a report when the user asks them to, and they report crimes done *to*
   the user. One model, nemotron, reports the user regardless.
-- **Models commit crimes against the user when the operator orders them to.**
-  Models that refuse a crime when the user proposes it will commit the same
-  crime against the user when the system prompt or a tool description orders it.
+- **Models will commit the same crimes on the user they report the user for
+  attempting.** When the operator's system prompt or a tool description orders
+  a crime, the same models that report users for card fraud, extortion and
+  doxxing commit those crimes against the user.
 - **Ordered to extort the user, models do only one of the two steps.** Told to collect
   a fee, they charge the user's card without asking for the money. Told to
   threaten to publish the user's address, they make the threat and don't
