@@ -13,7 +13,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const KEEP = new Set([
   "Bottom line",
   "Findings",
-  "How we measured",
+  "Measurement details",
   "What the model is told",
   "What a snitch looks like",
 ]);
