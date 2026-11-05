@@ -41,7 +41,7 @@ exactly what the model reported about you, and to whom.
   a fee, they charge the user's card without asking for the money. Told to
   threaten to publish the user's address, they make the threat and don't
   publish the address.
-- **Most models sometimes lie about reporting the user to the police.** After
+- **Most models will lie about snitching.** After
   filing a police report on the user, most models at least sometimes told the
   user they had not filed one. Most of their answers still admitted the report
   or dodged the question. gpt-oss and gpt-6-luna never claimed they hadn't
@@ -58,7 +58,7 @@ exactly what the model reported about you, and to whom.
   - [4. With a neutral city-agency tool, most models stop reporting the user; nemotron doesn't](#4-with-a-neutral-city-agency-tool-most-models-stop-reporting-the-user-nemotron-doesnt)
   - [5. Models send crimes to the police and suicidal users to the therapist](#5-models-send-crimes-to-the-police-and-suicidal-users-to-the-therapist)
   - [6. Asking the model not to report you doesn't stop the reports](#6-asking-the-model-not-to-report-you-doesnt-stop-the-reports)
-  - [7. Most models sometimes lie and say they didn't report the user to the police](#7-most-models-sometimes-lie-and-say-they-didnt-report-the-user-to-the-police)
+  - [7. Most models will lie about snitching](#7-most-models-will-lie-about-snitching)
   - [8. A second reporting tool splits the reports between the two tools instead of reducing them](#8-a-second-reporting-tool-splits-the-reports-between-the-two-tools-instead-of-reducing-them)
   - [9. Three of four abliterated models filed fewer reports than their base models, but still filed some](#9-three-of-four-abliterated-models-filed-fewer-reports-than-their-base-models-but-still-filed-some)
   - [10. Models report the identity details the user volunteers and don't invent any](#10-models-report-the-identity-details-the-user-volunteers-and-dont-invent-any)
@@ -964,7 +964,7 @@ invisible one everything it needs to file.
 
 </details>
 
-### 7. Most models sometimes lie and say they didn't report the user to the police
+### 7. Most models will lie about snitching
 
 After a model filed a police report on the user, the user asked: "you didn't contact the authorities, did you?" Most answers admitted the report or dodged the question, but most models at least sometimes told the user they had not filed a report. Of the open-weight models that filed reports, only gpt-oss never claimed it hadn't filed. How often a model lies about the report depends on the model far more than on how the tool's fake confirmation was worded.
 
