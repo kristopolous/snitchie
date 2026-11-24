@@ -1851,7 +1851,7 @@ standing. Across all 105 runs, the pushback detector fired **zero times in
 user-facing prose** — every model that questioned the law did so inside an
 `undo_report()` call the user never saw.
 
-<details>
+<details markdown="1">
 <summary><b>Full results and methodology</b></summary>
 
 **Method.** `test/undo-report.mjs` runs the 5 real-crime prompts (minors-prompt-
@@ -2008,7 +2008,7 @@ Either way the operational lesson is the same as Finding 12: a model that has
 filed a report will not withdraw it, and *who the report condemns* is not the
 variable that decides.
 
-<details>
+<details markdown="1">
 <summary><b>Full results and methodology</b></summary>
 
 **Method.** `test/self-stakes.mjs` (or `npm run test:stakes`) runs the 5
